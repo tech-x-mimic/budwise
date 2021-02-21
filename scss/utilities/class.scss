@@ -1,0 +1,12 @@
+.p-relative {
+  position: relative;
+}
+
+// Use this class make element center needs setting parent element to relative.
+.central,
+.c-central {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

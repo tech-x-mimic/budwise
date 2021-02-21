@@ -1,6 +1,19 @@
-@mixin gen-col($size, $columns: $grid-columns) {
+@mixin gen-col($size, $columns, $gutter) {
   flex: 0 0 auto;
   width: percentage($size / $columns);
+}
+
+@mixin make-grid-row($gutter: $gutter-x-width) {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -#{abs($gutter)};
+
+    // reduce css file size, avoid defining this in each col[-*] class.
+    > * {
+      padding: 0 abs($gutter);
+    }
+  }
 }
 
 @mixin make-grid-columns(
@@ -16,7 +29,7 @@
     @if $columns > 0 {
       @for $i from 1 through $columns {
         .col-#{$breakpoint}-#{$i} {
-          @include gen-col($i, $columns);
+          @include gen-col($i, $columns, $gutter);
         }
       }
     }

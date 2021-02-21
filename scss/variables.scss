@@ -7,12 +7,20 @@ $breakpoints: (
   xl: 1920px
 ) !default;
 
-
 /* -------------------------- ** Grid System ** -------------------------- */
 $grid-columns: 12 !default;
-
+$enable-grid-default-gutter: true !default;
 
 /* -------------------------- ** Gutter System ** -------------------------- */
+$gutter-tiers: (0, 1, 2, 3, 4, 5) !default;
+$gutter-scales: (
+  0: 0,
+  1: 0.25,
+  2: 0.5,
+  3: 1,
+  4: 2,
+  5: 4
+) !default;
 $gutter-x-width: 10px !default;
 $gutter-y-height: 10px !default;
 
