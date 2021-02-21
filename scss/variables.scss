@@ -1,0 +1,25 @@
+/* -------------------------- ** Media Query ** -------------------------- */
+$media: (sm, md, lg, xl) !default;
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 1280px,
+  xl: 1920px
+) !default;
+
+
+/* -------------------------- ** Grid System ** -------------------------- */
+$grid-columns: 12 !default;
+
+
+/* -------------------------- ** Gutter System ** -------------------------- */
+$gutter-x-width: 10px !default;
+$gutter-y-height: 10px !default;
+
+/* -------------------------- ** Container System ** -------------------------- */
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 1120,
+  xl: 1320px
+) !default;

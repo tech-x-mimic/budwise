@@ -1,0 +1,6 @@
+.container, .ctn,
+.container-fluid, .ctn-f {
+  @include gen-container()
+}
+
+@include make-container();

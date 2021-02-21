@@ -1,0 +1,24 @@
+@mixin gen-col($size, $columns: $grid-columns) {
+  flex: 0 0 auto;
+  width: percentage($size / $columns);
+}
+
+@mixin make-grid-columns(
+  $columns: $grid-columns,
+  $breakpoints: $breakpoints,
+  $gutter: $gutter-x-width
+) {
+  .col {
+    flex: 1 0 0%;
+  }
+
+  @each $breakpoint in map-keys($breakpoints) {
+    @if $columns > 0 {
+      @for $i from 1 through $columns {
+        .col-#{$breakpoint}-#{$i} {
+          @include gen-col($i, $columns);
+        }
+      }
+    }
+  }
+}

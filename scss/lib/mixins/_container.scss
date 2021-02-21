@@ -1,0 +1,19 @@
+@mixin gen-container($gutter: $gutter-x-width) {
+  width: 100%;
+  padding: 0 $gutter;
+  margin: 0 auto;
+}
+
+
+@mixin make-container { 
+  @each $point in $media {
+    $breakpoint: map-get($breakpoints, $point);
+    $container-max-width: map-get($container-max-widths, $point);
+
+    @include responsive-width($min: $breakpoint) {
+      .ctn, .container {
+        max-width: $container-max-width;
+      }
+    }
+  }
+}

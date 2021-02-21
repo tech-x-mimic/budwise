@@ -1,0 +1,47 @@
+@mixin responsive($breakpoint) {
+  $width: map-get($breakpoints, $breakpoint);
+  @if ($width) {
+    @media only screen and (min-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin responsive-width($min: null, $max: null) {
+  $min-type: type-of($min);
+  $max-type: type-of($max);
+
+  @if $min-type == number and $max-type == number {
+    @media only screen and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+
+  @else if $min-type == number {
+    @media only screen and (min-width: $min) {
+      @content;
+    }
+  }
+  
+  @else if $max-type == number {
+    @media only screen and (max-width: $max) {
+      @content;
+    }
+  }
+}
+
+@mixin text-truncate($ellipsis: ellipsis) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: $ellipsis;
+}
+
+// Also know as clamp
+// https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp
+@mixin line-truncate($line: 1) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;  
+  -webkit-line-clamp: $line;
+}
+
