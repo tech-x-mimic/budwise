@@ -21,8 +21,8 @@ $gutter-scales: (
   4: 2,
   5: 4
 ) !default;
-$gutter-x-width: 10px !default;
-$gutter-y-height: 10px !default;
+$gutter-x-width: 1em !default;
+$gutter-y-height: 1em !default;
 
 /* -------------------------- ** Container System ** -------------------------- */
 $container-max-widths: (
@@ -31,3 +31,88 @@ $container-max-widths: (
   lg: 1120,
   xl: 1320px
 ) !default;
+
+/* -------------------------- ** Flex System ** -------------------------- */
+$flex-props-cheatsheet: (
+  f: "flex",
+  d: "flex-direction",
+  w: "flex-wrap",
+  x: "justify-content",
+  y: "align-items",
+  ac: align-content,
+  o: order,
+  g: flex-grow,
+  s: flex-shrink,
+  as: align-self
+) !default;
+
+// key/value: classname/prop-map
+$flex-class-map: (
+  "d-flex": (
+    f: flex
+  ),
+  "d-inline-flex": (
+    f: inline-flex
+  ),
+  "flex-central": (
+    x: center,
+    y: center
+  ),
+  "flex-row": (
+    d: row
+  ),
+  "flex-row-reverse": (
+    d: row-reverse
+  ),
+  "flex-column": (
+    d: column
+  ),
+  "flex-column-reverse": (
+    d: column-reverse
+  ),
+  "flex-x-start": (
+    x: start
+  ),
+  "flex-x-end": (
+    x: end
+  ),
+  "flex-x-center": (
+    x: center
+  ),
+  "flex-x-between": (
+    x: between
+  ),
+  "flex-x-around": (
+    x: around
+  ),
+  "flex-x-evenly": (
+    x: evenly
+  ),
+  "flex-y-start": (
+    y: start
+  ),
+  "flex-y-end": (
+    y: end
+  ),
+  "flex-y-center": (
+    y: center
+  ),
+  "flex-y-baseline": (
+    y: baseline
+  ),
+  "flex-y-stretch": (
+    y: stretch
+  ),
+  "flex-grow-1": (
+    g: 1
+  ),
+  "flex-grow-0": (
+    g: 0
+  ),
+  "flex-shrink-1": (
+    s: 1
+  ),
+  "flex-shrink-0": (
+    s: 0
+  )
+);

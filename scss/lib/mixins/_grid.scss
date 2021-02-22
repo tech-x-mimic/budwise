@@ -25,12 +25,10 @@
     flex: 1 0 0%;
   }
 
-  @each $breakpoint in map-keys($breakpoints) {
-    @if $columns > 0 {
-      @for $i from 1 through $columns {
-        .col-#{$breakpoint}-#{$i} {
-          @include gen-col($i, $columns, $gutter);
-        }
+  @if $columns > 0 {
+    @for $i from 1 through $columns {
+      @include responsive-each(".col-#{$i}") {
+        @include gen-col($i, $columns, $gutter);
       }
     }
   }

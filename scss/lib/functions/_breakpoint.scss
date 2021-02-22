@@ -1,0 +1,11 @@
+@function padding-breakpoint(
+  $classname,
+  $breakpoint,
+  $hyphen: "-",
+  $tail: true
+) {
+  @if $tail {
+    @return #{$classname}#{$hyphen}#{$breakpoint};
+  }
+  @return #{$breakpoint}#{$hyphen}#{$classname};
+}

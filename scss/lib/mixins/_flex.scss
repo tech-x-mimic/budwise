@@ -1,0 +1,18 @@
+@mixin gen-flex($props...) {
+  @each $key, $value in keywords($props) {
+    $prop-name: map-get($flex-props-cheatsheet, $key);
+    @if $prop-name {
+      #{$prop-name}: $value;
+    }
+  }
+}
+
+@mixin make-flexs($classname) {
+  // Sass is smart enough to automatically fill in dot when do class name interpolation.
+  #{$classname} {
+    @content;
+  }
+  @include responsive-each($classname) {
+    @content;
+  }
+}

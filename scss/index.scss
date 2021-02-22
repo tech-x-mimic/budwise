@@ -1,6 +1,8 @@
+@import "./lib/functions/_breakpoint";
 @import "./lib/mixins/grid";
 @import "./lib/mixins/container";
 @import "./lib/mixins/gutter";
+@import "./lib/mixins/flex";
 
 @import "./utilities/mixin";
 @import "./utilities/class";
@@ -9,3 +11,4 @@
 @import "./grid";
 @import "./container";
 @import "./gutter";
+@import "./flex";

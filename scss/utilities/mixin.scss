@@ -7,6 +7,16 @@
   }
 }
 
+@mixin responsive-each($classname) {
+  @each $breakpoint in $media {
+    @include responsive($breakpoint) {
+      #{padding-breakpoint($classname, $breakpoint)} {
+        @content;
+      }
+    }
+  }
+}
+
 @mixin responsive-width($min: null, $max: null) {
   $min-type: type-of($min);
   $max-type: type-of($max);
