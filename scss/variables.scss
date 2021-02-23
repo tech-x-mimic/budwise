@@ -11,9 +11,9 @@ $breakpoints: (
 $grid-columns: 12 !default;
 $enable-grid-default-gutter: true !default;
 
-/* -------------------------- ** Gutter System ** -------------------------- */
-$gutter-tiers: (0, 1, 2, 3, 4, 5) !default;
-$gutter-scales: (
+/* -------------------------- ** Space System ** -------------------------- */
+$space-value: 1em !default;
+$space-tiers: (
   0: 0,
   1: 0.25,
   2: 0.5,
@@ -21,8 +21,33 @@ $gutter-scales: (
   4: 2,
   5: 4
 ) !default;
-$gutter-x-width: 1em !default;
-$gutter-y-height: 1em !default;
+$space-breakpoints: (
+  sm: 0.5em,
+  md: 0.8em,
+  lg: 1em,
+  xl: 1.5em
+) !default;
+
+$space-classname-props-map: (
+  p: padding,
+  pt: padding-top,
+  pb: padding-bottom,
+  pl: padding-left,
+  pr: padding-right,
+  py: (
+    padding-top,
+    padding-bottom
+  ),
+  px: (
+    padding-left,
+    padding-right
+  )
+);
+
+/* -------------------------- ** Gutter System ** -------------------------- */
+$gutter-tiers: $space-tiers;
+$gutter-x-width: $space-value;
+$gutter-y-height: $space-value;
 
 /* -------------------------- ** Container System ** -------------------------- */
 $container-max-widths: (

@@ -1,0 +1,9 @@
+@mixin make-spaces($classname, $props...) {
+  @each $tier, $scale in $space-tiers {
+    .#{$classname}-#{$tier} {
+      @each $prop in $props {
+        #{$prop}: $space-value * $scale;
+      }
+    }
+  }
+}

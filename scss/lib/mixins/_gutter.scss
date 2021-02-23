@@ -1,5 +1,5 @@
 @mixin make-gutters($gutter-x: $gutter-x-width, $gutter-y: $gutter-y-height) {
-  @each $key, $scale in $gutter-scales {
+  @each $key, $scale in $gutter-tiers {
     .g-#{$key},
     .gx-#{$key} {
       margin: 0 -#{abs($gutter-x * $scale)};

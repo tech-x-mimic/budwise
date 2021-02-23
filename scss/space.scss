@@ -1,0 +1,3 @@
+@each $classname, $prop in $space-classname-props-map {
+  @include make-spaces($classname, $prop...);
+}
