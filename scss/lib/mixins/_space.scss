@@ -4,6 +4,14 @@
       @each $prop in $props {
         #{$prop}: $space-value * $scale;
       }
+
+      @each $breakpoint, $space in $space-breakpoints {
+        @include responsive($breakpoint) {
+          @each $prop in $props {
+            #{$prop}: $space * $scale;
+          }
+        }
+      }
     }
   }
 }
