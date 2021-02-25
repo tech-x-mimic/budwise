@@ -57,3 +57,33 @@
     transform: scale($scale);
   }
 }
+
+/** 
+ .img-wrapper-1-1 {
+    @include img-aspect-radio-wrapper(1, 1);
+  }
+  
+  <div class="img-wrapper-1-1">
+    <img src="url" />
+  </div>
+**/
+@mixin img-aspect-radio-wrapper(
+  $x-scale,
+  $y-scale,
+  $wrapper-width-pct: 100%,
+  $object-fix: cover
+) {
+  position: relative;
+  height: 0;
+  width: $wrapper-width-pct;
+  padding-bottom: $wrapper-width-pct / $x-scale * $y-scale;
+
+  & > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: $object-fix;
+  }
+}

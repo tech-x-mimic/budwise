@@ -10,3 +10,23 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.img-wrapper-1-1 {
+  @include img-aspect-radio-wrapper(1, 1);
+}
+
+.img-wrapper-3-4 {
+  @include img-aspect-radio-wrapper(3, 4);
+}
+
+.img-wrapper-4-3 {
+  @include img-aspect-radio-wrapper(4, 3);
+}
+
+.img-wrapper-16-9 {
+  @include img-aspect-radio-wrapper(16, 9);
+}
+
+.img-wrapper-9-16 {
+  @include img-aspect-radio-wrapper(9, 16);
+}
