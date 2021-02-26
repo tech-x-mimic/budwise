@@ -45,13 +45,13 @@ $flex-class-map: (
     x: center
   ),
   "flex-x-between": (
-    x: between
+    x: space-between
   ),
   "flex-x-around": (
-    x: around
+    x: space-around
   ),
   "flex-x-evenly": (
-    x: evenly
+    x: space-evenly
   ),
   "flex-y-start": (
     y: start

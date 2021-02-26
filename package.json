@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node-sass scss/index.scss build/budwise.css",
+    "build": "node-sass scss/index.scss --output-style expanded build/budwise.css",
     "prefix": "npm run build && postcss --no-map --use autoprefixer -o build/budwise.main.css build/budwise.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
