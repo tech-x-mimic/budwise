@@ -1,0 +1,19 @@
+svg.fill-current {
+  fill: currentColor;
+}
+
+svg.stroke-current {
+  stroke: currentColor
+}
+
+
+/**   
+  // The SVG element will be 24*24 px.
+  <svg class="size-reset" style="font-size: 24px;">
+    ...
+  </svg>
+**/
+svg.size-reset {
+  width: 1em !important;
+  height: 1em !important;
+}
