@@ -1,0 +1,37 @@
+@mixin responsive($breakpoint) {
+  $width: map-get($breakpoints, $breakpoint);
+  @if ($width) {
+    @media only screen and (min-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin responsive-each($classname) {
+  @each $breakpoint in $media {
+    @include responsive($breakpoint) {
+      #{padding-breakpoint($classname, $breakpoint)} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin responsive-width($min: null, $max: null) {
+  $min-type: type-of($min);
+  $max-type: type-of($max);
+
+  @if $min-type == number and $max-type == number {
+    @media only screen and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $min-type == number {
+    @media only screen and (min-width: $min) {
+      @content;
+    }
+  } @else if $max-type == number {
+    @media only screen and (max-width: $max) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+$positions: (static, fixed, absolute, relative, sticky) !default;
+
+
+@each $position in $positions { 
+  .#{$position} {
+    position: $position;
+  }
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}

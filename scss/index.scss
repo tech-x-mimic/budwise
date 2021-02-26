@@ -1,17 +1,29 @@
+@import "./variables/breakpoint";
+@import "./variables/container";
+@import "./variables/flex";
+@import "./variables/grid";
+@import "./variables/gutter";
+@import "./variables/space";
+
+
 @import "./lib/functions/_breakpoint";
-@import "./lib/mixins/grid";
 @import "./lib/mixins/container";
-@import "./lib/mixins/space";
-@import "./lib/mixins/gutter";
 @import "./lib/mixins/flex";
+@import "./lib/mixins/grid";
+@import "./lib/mixins/gutter";
+@import "./lib/mixins/space";
 
 @import "./utilities/mixin";
-@import "./utilities/class";
+@import "./utilities/helper";
+@import "./utilities/position";
+@import "./utilities/responsive";
 @import "./utilities/svg";
+@import "./utilities/truncate";
+@import "./utilities/zindex.scss";
 
-@import "./variables";
-@import "./grid";
+
 @import "./container";
-@import "./space";
-@import "./gutter";
 @import "./flex";
+@import "./grid";
+@import "./gutter";
+@import "./space";

@@ -1,0 +1,24 @@
+@mixin text-truncate($ellipsis: ellipsis) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: $ellipsis;
+}
+
+// Also know as clamp
+// https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp
+@mixin line-truncate($line: 1) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+}
+
+.ellipsis {
+  @include text-truncate();
+}
+
+@for $i from 1 through 10 {
+  .clamp-#{$i} {
+    @include line-truncate($i);
+  }
+}

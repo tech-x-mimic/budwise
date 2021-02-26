@@ -1,0 +1,13 @@
+.z-min {
+  z-index: 0;
+}
+
+@for $i from 1 through 10 {
+  .z-#{$i} {
+    z-index: $i;
+  }
+}
+
+.z-max {
+  z-index: 999; 
+}

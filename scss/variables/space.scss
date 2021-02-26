@@ -1,0 +1,31 @@
+$space-value: 1em !default;
+$space-tiers: (
+  0: 0,
+  1: 0.25,
+  2: 0.5,
+  3: 1,
+  4: 2,
+  5: 4
+) !default;
+$space-breakpoints: (
+  sm: 0.5em,
+  md: 0.8em,
+  lg: 1em,
+  xl: 1.5em
+) !default;
+
+$space-classname-props-map: (
+  p: padding,
+  pt: padding-top,
+  pb: padding-bottom,
+  pl: padding-left,
+  pr: padding-right,
+  py: (
+    padding-top,
+    padding-bottom
+  ),
+  px: (
+    padding-left,
+    padding-right
+  )
+)!default;

@@ -8,8 +8,7 @@
 }
 
 @mixin make-flexs($classname) {
-  // Sass is smart enough to automatically fill in dot when do class name interpolation.
-  #{$classname} {
+  .#{$classname} {
     @content;
   }
   @include responsive-each($classname) {
