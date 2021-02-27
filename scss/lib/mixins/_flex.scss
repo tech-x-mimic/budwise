@@ -7,11 +7,20 @@
   }
 }
 
-@mixin make-flexs($classname) {
-  .#{$classname} {
-    @content;
+@mixin make-flexs($flex-class-map: $flex-class-map) {
+  @each $classname, $prop-map in $flex-class-map {
+    .#{$classname} {
+      @include gen-flex($prop-map...);
+    }
   }
-  @include responsive-each($classname) {
-    @content;
+
+  @each $breakpoint in $media {
+    @include responsive($breakpoint) {
+      @each $classname, $prop-map in $flex-class-map {
+        .#{with-surfix($classname, $breakpoint)} {
+          @include gen-flex($prop-map...);
+        }
+      }
+    }
   }
 }

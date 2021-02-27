@@ -7,12 +7,11 @@
   }
 }
 
-@mixin responsive-each($classname) {
-  @each $breakpoint in $media {
+// TODO: https://sass-lang.com/documentation/at-rules/mixin#passing-arguments-to-content-blocks
+@mixin responsive-each($breakpoints: $media) {
+  @each $breakpoint in $breakpoints {
     @include responsive($breakpoint) {
-      #{padding-breakpoint($classname, $breakpoint)} {
-        @content;
-      }
+      @content;
     }
   }
 }

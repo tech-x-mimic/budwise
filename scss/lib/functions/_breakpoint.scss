@@ -1,11 +1,11 @@
-@function padding-breakpoint(
-  $classname,
-  $breakpoint,
-  $hyphen: "-",
-  $tail: true
-) {
-  @if $tail {
-    @return #{$classname}#{$hyphen}#{$breakpoint};
-  }
-  @return #{$breakpoint}#{$hyphen}#{$classname};
+@function with-surfix($classname, $breakpoint, $hyphen: "_") {
+  @return #{$classname}#{$hyphen}#{$breakpoint};
+}
+
+// Index starts from 1
+@function with-dot($classname) {
+  @return if(index($classname, ".") == 1, $classname, ".#{$classname}");
+}
+@function without-dot($classname) {
+  @return if(index($classname, ".") != 1, $classname, slice($classname, 2));
 }

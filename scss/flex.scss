@@ -1,7 +1,1 @@
-// TODO: auto-prefix.
-
-@each $classname, $prop-map in $flex-class-map {
-  @include make-flexs($classname) {
-    @include gen-flex($prop-map...);
-  }
-}
+@include make-flexs();
