@@ -1,0 +1,16 @@
+$clears: (left, right, both) !default;
+
+@each $clear in $clears {
+  .clear-#{$clear} {
+    clear: $clear;
+  }
+}
+
+.clearfix,
+.clear-fix {
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}

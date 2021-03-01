@@ -5,7 +5,6 @@
 @import "./variables/gutter";
 @import "./variables/space";
 
-
 @import "./lib/functions/_breakpoint";
 @import "./lib/mixins/container";
 @import "./lib/mixins/flex";
@@ -13,14 +12,15 @@
 @import "./lib/mixins/gutter";
 @import "./lib/mixins/space";
 
+@import "./utilities/clear";
 @import "./utilities/mixin";
 @import "./utilities/helper";
+@import "./utilities/img.scss";
 @import "./utilities/position";
 @import "./utilities/responsive";
 @import "./utilities/svg";
 @import "./utilities/truncate";
 @import "./utilities/zindex.scss";
-
 
 @import "./container";
 @import "./flex";

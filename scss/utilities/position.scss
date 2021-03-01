@@ -1,15 +1,39 @@
 $positions: (static, fixed, absolute, relative, sticky) !default;
 
-
-@each $position in $positions { 
+@each $position in $positions {
   .#{$position} {
     position: $position;
   }
 }
 
-.fixed-top {
+@mixin fixed-block {
   position: fixed;
-  top: 0;
   right: 0;
   left: 0;
+}
+
+@mixin sticky-block {
+  position: sticky;
+  right: 0;
+  left: 0;
+}
+
+.fixed-top {
+  top: 0;
+  @include fixed-block;
+}
+
+.fixed-bottom {
+  bottom: 0;
+  @include fixed-block;
+}
+
+.sticky-top {
+  top: 0;
+  @include sticky-block;
+}
+
+.sticky-bottom {
+  bottom: 0;
+  @include sticky-block;
 }
