@@ -17,7 +17,7 @@
   @each $breakpoint in $media {
     @include responsive($breakpoint) {
       @each $classname, $prop-map in $flex-class-map {
-        .#{with-surfix($classname, $breakpoint)} {
+        #{with-surfix($breakpoint, with-dot($classname))} {
           @include gen-flex($prop-map...);
         }
       }

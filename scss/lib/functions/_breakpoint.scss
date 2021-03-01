@@ -1,5 +1,16 @@
-@function with-surfix($classname, $breakpoint, $hyphen: "_") {
-  @return #{$classname}#{$hyphen}#{$breakpoint};
+$surfix-hyphen: "-" !default;
+
+// If there is a dot before the class name, the output has too.
+@function with-surfix($breakpoint, $classname) {
+  @return #{$classname}#{$surfix-hyphen}#{$breakpoint};
+}
+
+@function with-surfixs($breakpoint, $classnames...) {
+  $rtn: "";
+  @each $classname in $classnames {
+    $rtn: "#{$rtn} #{with-surfix($breakpoint, $classname)},";
+  }
+  @return $rtn;
 }
 
 // Index starts from 1
