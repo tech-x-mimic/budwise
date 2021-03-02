@@ -1,7 +1,7 @@
 {
   "name": "budwise",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.1.0",
+  "description": "BudWise CSS framework",
   "main": "index.js",
   "scripts": {
     "build": "npm run sass && npm run prefixer && npm run minify",
@@ -15,7 +15,7 @@
     "scss"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^10.2.4",
     "clean-css-cli": "^5.2.0",
