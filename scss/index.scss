@@ -1,4 +1,5 @@
 @import "./variables/breakpoint";
+@import "./variables/common";
 @import "./variables/container";
 @import "./variables/dimension";
 @import "./variables/flex";
@@ -6,7 +7,10 @@
 @import "./variables/gutter";
 @import "./variables/space";
 
-@import "./lib/functions/_breakpoint";
+@import "./lib/functions/breakpoint";
+@import "./lib/functions/escape";
+@import "./lib/functions/variable";
+
 @import "./lib/mixins/container";
 @import "./lib/mixins/dimension";
 @import "./lib/mixins/flex";

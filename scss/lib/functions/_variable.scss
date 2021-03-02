@@ -1,0 +1,7 @@
+@function variable($name) {
+  @return unquote("--#{$variable-prefix}#{$name}");
+}
+
+@function use-var($name, $default...) {
+  @return var(variable($name), $default);
+}

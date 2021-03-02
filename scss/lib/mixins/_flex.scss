@@ -37,23 +37,23 @@
   @each $breakpoint in $media {
     @include responsive($breakpoint) {
       @each $classname, $prop-map in $flex-class-map {
-        #{with-surfix($breakpoint, with-dot($classname))} {
+        .#{with-affix($breakpoint, without-dot($classname))} {
           @include gen-flex($prop-map...);
         }
       }
 
       @for $i from 0 through $flex-orders {
-        #{with-surfix($breakpoint, with-dot("order-#{$i}"))} {
+        .#{with-affix($breakpoint, "order-#{$i}")} {
           order: $i;
         }
       }
 
       @for $i from 0 through $flex-elastics {
-        #{with-surfix($breakpoint, with-dot("shrink-#{$i}"))} {
+        .#{with-affix($breakpoint, "shrink-#{$i}")} {
           flex-shrink: $i;
         }
 
-        #{with-surfix($breakpoint, with-dot("grow-#{$i}"))} {
+        .#{with-affix($breakpoint, "grow-#{$i}")} {
           flex-grow: $i;
         }
       }

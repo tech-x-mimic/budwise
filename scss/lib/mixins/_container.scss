@@ -10,7 +10,7 @@
 
     @include responsive($breakpoint) {
       @if ($container-max-width) {
-        #{with-surfixs($breakpoint, ".container", ".ctn")} {
+        #{with-affixs($breakpoint, "container", "ctn")} {
           max-width: $container-max-width;
         }
       }

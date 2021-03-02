@@ -1,14 +1,15 @@
-$surfix-hyphen: "-" !default;
-
-// If there is a dot before the class name, the output has too.
-@function with-surfix($breakpoint, $classname) {
-  @return #{$classname}#{$surfix-hyphen}#{$breakpoint};
+@function with-affix($affix, $name, $hyphen: $hyphen) {
+  $hyphen: escape($hyphen);
+  @if $prefix {
+    @return #{$affix}#{$hyphen}#{$name};
+  }
+  @return #{$name}#{$hyphen}#{$affix};
 }
 
-@function with-surfixs($breakpoint, $classnames...) {
+@function with-affixs($affix, $classnames...) {
   $rtn: "";
-  @each $classname in $classnames {
-    $rtn: "#{$rtn} #{with-surfix($breakpoint, $classname)},";
+  @each $name in $classnames {
+    $rtn: "#{$rtn} #{with-dot(with-affix($affix, without-dot($name)))},";
   }
   @return $rtn;
 }

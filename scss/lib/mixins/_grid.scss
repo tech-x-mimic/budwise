@@ -38,19 +38,11 @@
     @each $breakpoint in $media {
       @include responsive($breakpoint) {
         @for $i from 1 through $columns {
-          #{with-surfix($breakpoint, ".col-#{$i}")} {
+          .#{with-affix($breakpoint, "col-#{$i}")} {
             @include gen-col($i, $columns, $gutter);
           }
         }
       }
     }
-    // $context: "sm";
-    // @include responsive-each($context: $context) {
-    //   @for $i from 1 through $columns {
-    //     .#{with-surfix($context, ".col-#{$i}")} {
-    //       @include gen-col($i, $columns, $gutter);
-    //     }
-    //   }
-    // }
   }
 }

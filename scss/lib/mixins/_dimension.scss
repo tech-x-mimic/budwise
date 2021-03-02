@@ -45,37 +45,37 @@
   @each $breakpoint in $media {
     @include responsive($breakpoint) {
       @each $key, $value in $width-map {
-        #{with-surfix($breakpoint, ".w-#{$key}")} {
+        .#{with-affix($breakpoint, "w-#{$key}")} {
           width: $value;
         }
       }
 
       @each $key, $value in $height-map {
-        #{with-surfix($breakpoint, ".h-#{$key}")} {
+        .#{with-affix($breakpoint, "h-#{$key}")} {
           height: $value;
         }
       }
 
       @each $key, $value in $max-width-map {
-        #{with-surfix($breakpoint, ".max-w-#{$key}")} {
+        .#{with-affix($breakpoint, "max-w-#{$key}")} {
           max-width: $value;
         }
       }
 
       @each $key, $value in $max-height-map {
-        #{with-surfix($breakpoint, ".max-h-#{$key}")} {
+        .#{with-affix($breakpoint, "max-h-#{$key}")} {
           min-height: $value;
         }
       }
 
       @each $key, $value in $min-width-map {
-        #{with-surfix($breakpoint, ".min-w-#{$key}")} {
+        .#{with-affix($breakpoint, "min-w-#{$key}")} {
           min-width: $value;
         }
       }
 
       @each $key, $value in $min-height-map {
-        #{with-surfix($breakpoint, ".min-h-#{$key}")} {
+        .#{with-affix($breakpoint, "min-h-#{$key}")} {
           min-height: $value;
         }
       }

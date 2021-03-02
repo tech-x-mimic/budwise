@@ -1,0 +1,14 @@
+$keywords: (".", "+", ":", "~", ">");
+
+@function escape($quote-string) {
+  $rtn: "";
+  $len: str-length($quote-string);
+
+  @for $i from 1 through $len {
+    $char: str-slice($quote-string, $i, $i);
+    $rtn: $rtn +
+      if(index($keywords, $char), str-insert($char, "\\", -2), $char);
+  }
+
+  @return $rtn;
+}
