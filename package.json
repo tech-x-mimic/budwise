@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node-sass scss/index.scss --output-style expanded build/budwise.css",
-    "prefix": "npm run build && postcss --no-map --use autoprefixer -o build/budwise.main.css build/budwise.css",
+    "build": "npm run sass && npm run prefixer && npm run minify",
+    "minify": "cleancss --input-source-map build/budwise.css.map -o build/budwise.min.css build/budwise.css",
+    "sass": "node-sass scss/index.scss --output-style expanded --source-map true build/budwise.css",
+    "prefixer": "postcss --use autoprefixer --replace build/budwise.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -16,6 +18,7 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.2.4",
+    "clean-css-cli": "^5.2.0",
     "node-sass": "^5.0.0",
     "postcss": "^8.2.6",
     "postcss-cli": "^8.3.1"
