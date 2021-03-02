@@ -1,5 +1,6 @@
 @import "./variables/breakpoint";
 @import "./variables/container";
+@import "./variables/dimension";
 @import "./variables/flex";
 @import "./variables/grid";
 @import "./variables/gutter";
@@ -7,6 +8,7 @@
 
 @import "./lib/functions/_breakpoint";
 @import "./lib/mixins/container";
+@import "./lib/mixins/dimension";
 @import "./lib/mixins/flex";
 @import "./lib/mixins/grid";
 @import "./lib/mixins/gutter";
@@ -23,6 +25,7 @@
 @import "./utilities/zindex.scss";
 
 @import "./container";
+@import "./dimension";
 @import "./flex";
 @import "./grid";
 @import "./gutter";

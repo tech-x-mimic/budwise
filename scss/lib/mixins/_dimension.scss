@@ -1,0 +1,84 @@
+@mixin make-dimensions(
+  $width-map: $deimension-width-map,
+  $height-map: $deimension-height-map,
+  $max-width-map: $deimension-max-width-map,
+  $max-height-map: $deimension-max-height-map,
+  $min-width-map: $deimension-min-width-map,
+  $min-height-map: $deimension-min-height-map
+) {
+  @each $key, $value in $width-map {
+    .w-#{$key} {
+      width: $value;
+    }
+  }
+
+  @each $key, $value in $height-map {
+    .h-#{$key} {
+      height: $value;
+    }
+  }
+
+  @each $key, $value in $max-width-map {
+    .max-w-#{$key} {
+      max-width: $value;
+    }
+  }
+
+  @each $key, $value in $max-height-map {
+    .max-h-#{$key} {
+      max-height: $value;
+    }
+  }
+
+  @each $key, $value in $min-width-map {
+    .min-w-#{$key} {
+      max-width: $value;
+    }
+  }
+
+  @each $key, $value in $min-height-map {
+    .min-h-#{$key} {
+      min-height: $value;
+    }
+  }
+
+  @each $breakpoint in $media {
+    @include responsive($breakpoint) {
+      @each $key, $value in $width-map {
+        #{with-surfix($breakpoint, ".w-#{$key}")} {
+          width: $value;
+        }
+      }
+
+      @each $key, $value in $height-map {
+        #{with-surfix($breakpoint, ".h-#{$key}")} {
+          height: $value;
+        }
+      }
+
+      @each $key, $value in $max-width-map {
+        #{with-surfix($breakpoint, ".max-w-#{$key}")} {
+          max-width: $value;
+        }
+      }
+
+      @each $key, $value in $max-height-map {
+        #{with-surfix($breakpoint, ".max-h-#{$key}")} {
+          min-height: $value;
+        }
+      }
+
+      @each $key, $value in $min-width-map {
+        #{with-surfix($breakpoint, ".min-w-#{$key}")} {
+          min-width: $value;
+        }
+      }
+
+      @each $key, $value in $min-height-map {
+        #{with-surfix($breakpoint, ".min-h-#{$key}")} {
+          min-height: $value;
+        }
+      }
+    }
+  }
+}
