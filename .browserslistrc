@@ -1,5 +1,6 @@
-last 2 versions
-IE 11
+last 2 major versions
+not dead
+IE 10
 not Edge < 79
-Safari >= 9
+Safari >= 10
 Android >= 6

@@ -7,10 +7,30 @@
   }
 }
 
-@mixin make-flexs($flex-class-map: $flex-class-map) {
+@mixin make-flexs(
+  $flex-class-map: $flex-class-map,
+  $flex-orders: $grid-columns,
+  $flex-elastics: $flex-item-elastic
+) {
   @each $classname, $prop-map in $flex-class-map {
     .#{$classname} {
       @include gen-flex($prop-map...);
+    }
+  }
+
+  @for $i from 0 through $flex-orders {
+    .order-#{$i} {
+      order: $i;
+    }
+  }
+
+  @for $i from 0 through $flex-elastics {
+    .shrink-#{$i} {
+      flex-shrink: $i;
+    }
+
+    .grow-#{$i} {
+      flex-grow: $i;
     }
   }
 
@@ -19,6 +39,22 @@
       @each $classname, $prop-map in $flex-class-map {
         #{with-surfix($breakpoint, with-dot($classname))} {
           @include gen-flex($prop-map...);
+        }
+      }
+
+      @for $i from 0 through $flex-orders {
+        #{with-surfix($breakpoint, with-dot("order-#{$i}"))} {
+          order: $i;
+        }
+      }
+
+      @for $i from 0 through $flex-elastics {
+        #{with-surfix($breakpoint, with-dot("shrink-#{$i}"))} {
+          flex-shrink: $i;
+        }
+
+        #{with-surfix($breakpoint, with-dot("grow-#{$i}"))} {
+          flex-grow: $i;
         }
       }
     }

@@ -80,4 +80,6 @@ $flex-class-map: (
   "flex-shrink-0": (
     s: 0
   )
-)!default;
+) !default;
+
+$flex-item-elastic: 2 !default;
