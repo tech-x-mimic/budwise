@@ -7,11 +7,13 @@
   }
 }
 
-// TODO: https://sass-lang.com/documentation/at-rules/mixin#passing-arguments-to-content-blocks
 @mixin responsive-each($breakpoints: $media) {
   @each $breakpoint in $breakpoints {
     @include responsive($breakpoint) {
-      @content;
+      // https://sass-lang.com/documentation/at-rules/mixin#passing-arguments-to-content-blocks
+      // FIXME: linter.
+      // prettier-ignore
+      @content($breakpoint);
     }
   }
 }

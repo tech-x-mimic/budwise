@@ -42,42 +42,40 @@
     }
   }
 
-  @each $breakpoint in $media {
-    @include responsive($breakpoint) {
-      @each $key, $value in $width-map {
-        .#{with-affix($breakpoint, "w-#{$key}")} {
-          width: $value;
-        }
+  @include responsive-each() using ($breakpoint) {
+    @each $key, $value in $width-map {
+      .#{with-affix($breakpoint, "w-#{$key}")} {
+        width: $value;
       }
+    }
 
-      @each $key, $value in $height-map {
-        .#{with-affix($breakpoint, "h-#{$key}")} {
-          height: $value;
-        }
+    @each $key, $value in $height-map {
+      .#{with-affix($breakpoint, "h-#{$key}")} {
+        height: $value;
       }
+    }
 
-      @each $key, $value in $max-width-map {
-        .#{with-affix($breakpoint, "max-w-#{$key}")} {
-          max-width: $value;
-        }
+    @each $key, $value in $max-width-map {
+      .#{with-affix($breakpoint, "max-w-#{$key}")} {
+        max-width: $value;
       }
+    }
 
-      @each $key, $value in $max-height-map {
-        .#{with-affix($breakpoint, "max-h-#{$key}")} {
-          min-height: $value;
-        }
+    @each $key, $value in $max-height-map {
+      .#{with-affix($breakpoint, "max-h-#{$key}")} {
+        min-height: $value;
       }
+    }
 
-      @each $key, $value in $min-width-map {
-        .#{with-affix($breakpoint, "min-w-#{$key}")} {
-          min-width: $value;
-        }
+    @each $key, $value in $min-width-map {
+      .#{with-affix($breakpoint, "min-w-#{$key}")} {
+        min-width: $value;
       }
+    }
 
-      @each $key, $value in $min-height-map {
-        .#{with-affix($breakpoint, "min-h-#{$key}")} {
-          min-height: $value;
-        }
+    @each $key, $value in $min-height-map {
+      .#{with-affix($breakpoint, "min-h-#{$key}")} {
+        min-height: $value;
       }
     }
   }

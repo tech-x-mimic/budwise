@@ -32,15 +32,10 @@
       }
     }
 
-    // FIXME: Currently node-sass does not seem to support closures and
-    // no Passing Arguments to Content Blocks feat either
-    // this is handy way to bundle media query class.
-    @each $breakpoint in $media {
-      @include responsive($breakpoint) {
-        @for $i from 1 through $columns {
-          .#{with-affix($breakpoint, "col-#{$i}")} {
-            @include gen-col($i, $columns, $gutter);
-          }
+    @include responsive-each() using ($breakpoint) {
+      @for $i from 1 through $columns {
+        .#{with-affix($breakpoint, "col-#{$i}")} {
+          @include gen-col($i, $columns, $gutter);
         }
       }
     }

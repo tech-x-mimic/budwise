@@ -5,14 +5,12 @@
 }
 
 @mixin make-container {
-  @each $breakpoint in $media {
+  @include responsive-each() using ($breakpoint) {
     $container-max-width: map-get($container-max-widths, $breakpoint);
 
-    @include responsive($breakpoint) {
-      @if ($container-max-width) {
-        #{with-affixs($breakpoint, "container", "ctn")} {
-          max-width: $container-max-width;
-        }
+    @if ($container-max-width) {
+      #{with-affixs($breakpoint, "container", "ctn")} {
+        max-width: $container-max-width;
       }
     }
   }

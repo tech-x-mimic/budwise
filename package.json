@@ -6,8 +6,9 @@
   "scripts": {
     "build": "npm run sass && npm run prefixer && npm run minify",
     "minify": "cleancss --input-source-map build/budwise.css.map -o build/budwise.min.css build/budwise.css",
-    "sass": "node-sass scss/index.scss --output-style expanded --source-map true build/budwise.css",
+    "sass": "sass -s expanded --no-error-css scss/index.scss build/budwise.css",
     "prefixer": "postcss --use autoprefixer --replace build/budwise.css",
+    "stylelint": "stylelint \"**/*.scss\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -21,7 +22,10 @@
     "clean-css-cli": "^5.2.0",
     "node-sass": "^5.0.0",
     "postcss": "^8.2.6",
-    "postcss-cli": "^8.3.1"
+    "postcss-cli": "^8.3.1",
+    "sass": "^1.32.8",
+    "stylelint": "^13.11.0",
+    "stylelint-config-recommended-scss": "^4.2.0"
   },
   "dependencies": {}
 }
