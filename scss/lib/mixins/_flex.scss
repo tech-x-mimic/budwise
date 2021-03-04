@@ -1,3 +1,8 @@
+@use "../../variables/flex" as *;
+@use "../../variables/grid" as *;
+@use "../functions/breakpoint" as *;
+@use "./responsive" as *;
+
 @mixin gen-flex($props...) {
   @each $key, $value in keywords($props) {
     $prop-name: map-get($flex-props-cheatsheet, $key);

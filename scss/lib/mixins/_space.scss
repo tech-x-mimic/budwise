@@ -1,21 +1,26 @@
-@mixin make-spaces($classname, $props...) {
-  @each $tier, $scale in $space-tiers {
-    .#{$classname}-#{$tier} {
-      @each $prop in $props {
-        #{$prop}: $space-value * $scale;
+@use '../../variables/space' as *;
+@use './responsive' as *;
+
+@mixin make-spaces() {
+  @each $classname, $props in $space-classname-props-map {
+    @each $tier, $scale in $space-tiers {
+      .#{$classname}-#{$tier} {
+        @each $prop in $props {
+          #{$prop}: $space-value * $scale;
+        }
       }
     }
-  }
 
-  // Padding and Margin is design for configurable auto resposive.
-  @include responsive-each() using ($breakpoint) {
-    $breakpoint-space: map-get($space-breakpoints, $breakpoint);
+    // Padding and Margin is design for configurable auto resposive.
+    @include responsive-each() using ($breakpoint) {
+      $breakpoint-space: map-get($space-breakpoints, $breakpoint);
 
-    @each $tier, $scale in $space-tiers {
-      @if $breakpoint-space {
-        .#{$classname}-#{$tier} {
-          @each $prop in $props {
-            #{$prop}: $breakpoint-space * $scale;
+      @each $tier, $scale in $space-tiers {
+        @if $breakpoint-space {
+          .#{$classname}-#{$tier} {
+            @each $prop in $props {
+              #{$prop}: $breakpoint-space * $scale;
+            }
           }
         }
       }

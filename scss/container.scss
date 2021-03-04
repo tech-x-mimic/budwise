@@ -1,6 +1,10 @@
-.container, .ctn,
-.container-fluid, .ctn-f {
-  @include gen-container()
+@use "./lib/mixins/container" as *;
+
+.container,
+.ctn,
+.container-fluid,
+.ctn-f {
+  @include gen-container();
 }
 
 @include make-container();

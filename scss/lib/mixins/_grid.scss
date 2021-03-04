@@ -1,9 +1,17 @@
+@use "../../variables/grid" as *;
+@use "../../variables/gutter" as *;
+@use "../../variables/breakpoint" as *;
+@use "../functions/breakpoint" as *;
+@use "./responsive" as *;
+
+$gap-x-width: if($enable-grid-default-gutter, $gutter-x-width, 0);
+
 @mixin gen-col($size, $columns, $gutter) {
   flex: 0 0 auto;
   width: percentage($size / $columns);
 }
 
-@mixin make-grid-row($gutter: $gutter-x-width) {
+@mixin make-grid-row($gutter: $gap-x-width) {
   .row {
     display: flex;
     flex-wrap: wrap;
@@ -19,7 +27,7 @@
 @mixin make-grid-columns(
   $columns: $grid-columns,
   $breakpoints: $breakpoints,
-  $gutter: $gutter-x-width
+  $gutter: $gap-x-width
 ) {
   .col {
     flex: 1 0 0%;

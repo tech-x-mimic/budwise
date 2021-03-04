@@ -1,0 +1,40 @@
+@use '../../variables/breakpoint' as *;
+
+@mixin responsive($breakpoint) {
+  $width: map-get($breakpoints, $breakpoint);
+  @if ($width) {
+    @media only screen and (min-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin responsive-each($breakpoints: $media) {
+  @each $breakpoint in $breakpoints {
+    @include responsive($breakpoint) {
+      // https://sass-lang.com/documentation/at-rules/mixin#passing-arguments-to-content-blocks
+      // FIXME: linter.
+      // prettier-ignore
+      @content($breakpoint);
+    }
+  }
+}
+
+@mixin responsive-width($min: null, $max: null) {
+  $min-type: type-of($min);
+  $max-type: type-of($max);
+
+  @if $min-type == number and $max-type == number {
+    @media only screen and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $min-type == number {
+    @media only screen and (min-width: $min) {
+      @content;
+    }
+  } @else if $max-type == number {
+    @media only screen and (max-width: $max) {
+      @content;
+    }
+  }
+}

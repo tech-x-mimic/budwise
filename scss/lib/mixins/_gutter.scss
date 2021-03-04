@@ -1,3 +1,5 @@
+@use "../../variables/gutter.scss" as *;
+
 @mixin make-gutters($gutter-x: $gutter-x-width, $gutter-y: $gutter-y-height) {
   @each $key, $scale in $gutter-tiers {
     .g-#{$key},

@@ -1,1 +1,3 @@
+@use "./lib/mixins/dimension" as *;
+
 @include make-dimensions();

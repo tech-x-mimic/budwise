@@ -2,11 +2,11 @@
   "name": "budwise",
   "version": "0.2.0",
   "description": "BudWise CSS framework",
-  "main": "index.js",
+  "main": "scss/index.scss",
   "scripts": {
     "build": "npm run sass && npm run prefixer && npm run minify",
     "minify": "cleancss --input-source-map build/budwise.css.map -o build/budwise.min.css build/budwise.css",
-    "sass": "sass -s expanded --no-error-css scss/index.scss build/budwise.css",
+    "sass": "sass -s expanded --no-error-css --no-embed-sources --no-embed-source-map scss/index.scss build/budwise.css",
     "prefixer": "postcss --use autoprefixer --replace build/budwise.css",
     "stylelint": "stylelint \"**/*.scss\"",
     "test": "echo \"Error: no test specified\" && exit 1"

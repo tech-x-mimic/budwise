@@ -1,3 +1,7 @@
+@use "../../variables/dimension" as *;
+@use "../functions/breakpoint" as *;
+@use "./responsive" as *;
+
 @mixin make-dimensions(
   $width-map: $deimension-width-map,
   $height-map: $deimension-height-map,

@@ -1,3 +1,6 @@
+@use "../../variables/common" as *;
+@use "./escape" as *;
+
 @function with-affix($affix, $name, $hyphen: $hyphen) {
   $hyphen: escape($hyphen);
   @if $prefix {

@@ -1,5 +1,5 @@
-$gap-x-width: if($enable-grid-default-gutter, $gutter-x-width, 0);
+@use "./lib/mixins/grid" as *;
 
-@include make-grid-row($gutter: $gap-x-width);
+@include make-grid-row();
 
-@include make-grid-columns($gutter: $gap-x-width);
+@include make-grid-columns();

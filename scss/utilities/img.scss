@@ -1,3 +1,5 @@
+@use "./mixin.scss" as *;
+
 $img-radio-map: (
   "1-1": 100%,
   "3-4": 3/4,
