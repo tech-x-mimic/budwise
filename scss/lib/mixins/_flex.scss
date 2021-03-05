@@ -1,7 +1,7 @@
-@use "../../variables/flex" as *;
-@use "../../variables/grid" as *;
-@use "../functions/breakpoint" as *;
-@use "./responsive" as *;
+@import "../../variables/flex";
+@import "../../variables/grid";
+@import "../functions/breakpoint";
+@import "./responsive";
 
 @mixin gen-flex($props...) {
   @each $key, $value in keywords($props) {

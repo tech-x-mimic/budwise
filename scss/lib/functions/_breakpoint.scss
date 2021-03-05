@@ -1,5 +1,5 @@
-@use "../../variables/common" as *;
-@use "./escape" as *;
+@import "../../variables/common";
+@import "./escape";
 
 @function with-affix($affix, $name, $hyphen: $hyphen) {
   $hyphen: escape($hyphen);

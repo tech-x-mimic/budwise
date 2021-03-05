@@ -1,4 +1,4 @@
-@use "../../variables/gutter.scss" as *;
+@import "../../variables/gutter";
 
 @mixin make-gutters($gutter-x: $gutter-x-width, $gutter-y: $gutter-y-height) {
   @each $key, $scale in $gutter-tiers {

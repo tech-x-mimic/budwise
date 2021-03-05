@@ -1,4 +1,4 @@
-@use '../../variables/breakpoint' as *;
+@import "../../variables/breakpoint";
 
 @mixin responsive($breakpoint) {
   $width: map-get($breakpoints, $breakpoint);

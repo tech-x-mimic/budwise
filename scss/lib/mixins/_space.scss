@@ -1,5 +1,5 @@
-@use '../../variables/space' as *;
-@use './responsive' as *;
+@import "../../variables/space";
+@import "./responsive";
 
 @mixin make-spaces() {
   @each $classname, $props in $space-classname-props-map {

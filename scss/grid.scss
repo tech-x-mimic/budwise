@@ -1,4 +1,4 @@
-@use "./lib/mixins/grid" as *;
+@import "./lib/mixins/grid";
 
 @include make-grid-row();
 

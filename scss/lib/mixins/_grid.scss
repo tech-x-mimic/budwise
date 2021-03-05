@@ -1,8 +1,8 @@
-@use "../../variables/grid" as *;
-@use "../../variables/gutter" as *;
-@use "../../variables/breakpoint" as *;
-@use "../functions/breakpoint" as *;
-@use "./responsive" as *;
+@import "../../variables/grid";
+@import "../../variables/gutter";
+@import "../../variables/breakpoint";
+@import "../functions/breakpoint";
+@import "./responsive";
 
 $gap-x-width: if($enable-grid-default-gutter, $gutter-x-width, 0);
 

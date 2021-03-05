@@ -1,7 +1,7 @@
-@use "../../variables/container" as *;
-@use "../../variables/gutter" as *;
-@use "../functions/breakpoint" as *;
-@use "./responsive" as *;
+@import "../../variables/container";
+@import "../../variables/gutter";
+@import "../functions/breakpoint";
+@import "./responsive";
 
 @mixin gen-container($gutter: $gutter-x-width) {
   width: 100%;
