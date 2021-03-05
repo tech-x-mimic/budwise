@@ -2,6 +2,9 @@ $deimension-width-map: (
   0: 0,
   100: 100%,
   screen: 100vw,
+  em-1: 1em,
+  em-2: 2em,
+  em-3: 3em,
   px-0: 0px
 ) !default;
 
@@ -9,6 +12,9 @@ $deimension-height-map: (
   0: 0,
   100: 100%,
   screen: 100vh,
+  em-1: 1em,
+  em-2: 2em,
+  em-3: 3em,
   px-0: 0px
 ) !default;
 

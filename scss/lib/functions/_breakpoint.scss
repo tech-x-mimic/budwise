@@ -1,12 +1,16 @@
 @import "../../variables/common";
 @import "./escape";
 
-@function with-affix($affix, $name, $hyphen: $hyphen) {
-  $hyphen: escape($hyphen);
-  @if $prefix {
-    @return #{$affix}#{$hyphen}#{$name};
+@function concat($head, $tail, $hyphen: $hyphen) {
+  @return $head + escape($hyphen) + $tail;
+}
+
+@function with-affix($affix, $name, $prefix: $prefix) {
+  @if $affix == null or $affix == "" {
+    @return $name;
   }
-  @return #{$name}#{$hyphen}#{$affix};
+
+  @return if($prefix, concat($affix, $name), concat($name, $affix));
 }
 
 @function with-affixs($affix, $classnames...) {

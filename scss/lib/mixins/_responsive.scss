@@ -1,7 +1,8 @@
 @import "../../variables/breakpoint";
 
-@mixin responsive($breakpoint) {
+@mixin responsive($breakpoint, $skip: false) {
   $width: map-get($breakpoints, $breakpoint);
+
   @if ($width) {
     @media only screen and (min-width: $width) {
       @content;
@@ -9,11 +10,15 @@
   }
 }
 
-@mixin responsive-each($breakpoints: $media) {
+@mixin responsive-each($breakpoints: $media, $include-unresponsive: true) {
+  @if $include-unresponsive {
+    // prettier-ignore
+    @content(null);
+  }
+
   @each $breakpoint in $breakpoints {
     @include responsive($breakpoint) {
       // https://sass-lang.com/documentation/at-rules/mixin#passing-arguments-to-content-blocks
-      // FIXME: linter.
       // prettier-ignore
       @content($breakpoint);
     }
@@ -36,5 +41,7 @@
     @media only screen and (max-width: $max) {
       @content;
     }
+  } @else {
+    @content;
   }
 }

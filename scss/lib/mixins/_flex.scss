@@ -17,28 +17,6 @@
   $flex-orders: $row-columns,
   $flex-elastics: $flex-item-elastic
 ) {
-  @each $classname, $prop-map in $flex-class-map {
-    .#{$classname} {
-      @include gen-flex($prop-map...);
-    }
-  }
-
-  @for $i from 0 through $flex-orders {
-    .order-#{$i} {
-      order: $i;
-    }
-  }
-
-  @for $i from 0 through $flex-elastics {
-    .shrink-#{$i} {
-      flex-shrink: $i;
-    }
-
-    .grow-#{$i} {
-      flex-grow: $i;
-    }
-  }
-
   @include responsive-each() using ($breakpoint) {
     @each $classname, $prop-map in $flex-class-map {
       .#{with-affix($breakpoint, without-dot($classname))} {

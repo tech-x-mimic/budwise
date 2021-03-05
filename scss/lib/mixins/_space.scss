@@ -12,7 +12,7 @@
     }
 
     // Padding and Margin is design for configurable auto resposive.
-    @include responsive-each() using ($breakpoint) {
+    @include responsive-each($include-unresponsive: false) using ($breakpoint) {
       $breakpoint-space: map-get($space-breakpoints, $breakpoint);
 
       @each $tier, $scale in $space-tiers {

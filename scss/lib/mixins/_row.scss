@@ -32,12 +32,6 @@
   }
 
   @if $columns > 0 {
-    @for $i from 1 through $columns {
-      .col-#{$i} {
-        @include gen-col($i, $columns);
-      }
-    }
-
     @include responsive-each() using ($breakpoint) {
       @for $i from 1 through $columns {
         .#{with-affix($breakpoint, "col-#{$i}")} {
