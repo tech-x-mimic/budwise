@@ -1,10 +1,3 @@
 @import "./lib/mixins/container";
 
-.container,
-.ctn,
-.container-fluid,
-.ctn-f {
-  @include gen-container();
-}
-
-@include make-container();
+@include make-containers();

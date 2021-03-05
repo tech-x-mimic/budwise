@@ -1,0 +1,6 @@
+@function un-unit($val) {
+  $one-unit: 1 + $val * 0;
+
+  // eliminate the unit.
+  @return $val / $one-unit;
+}

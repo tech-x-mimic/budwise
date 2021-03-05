@@ -3,19 +3,34 @@
 @import "../functions/breakpoint";
 @import "./responsive";
 
-@mixin gen-container($gutter: $gutter-x-width) {
+@mixin gen-container($space) {
   width: 100%;
-  padding: 0 $gutter;
+  padding: 0 $space;
   margin: 0 auto;
 }
 
-@mixin make-container {
-  @include responsive-each() using ($breakpoint) {
+@mixin make-containers($space: $container-space) {
+  .ctn,
+  .container,
+  .ctn-f,
+  .container-fluid {
+    @include gen-container($space);
+  }
+
+  @each $breakpoint in $media {
     $container-max-width: map-get($container-max-widths, $breakpoint);
 
     @if ($container-max-width) {
-      #{with-affixs($breakpoint, "container", "ctn")} {
-        max-width: $container-max-width;
+      $classname: #{with-affixs($breakpoint, "ctn", "container")};
+
+      #{$classname} {
+        @extend .container-fluid;
+      }
+
+      @include responsive($breakpoint) {
+        #{$classname} {
+          max-width: $container-max-width;
+        }
       }
     }
   }

@@ -1,34 +1,32 @@
-@import "../../variables/grid";
+@import "../../variables/row";
 @import "../../variables/gutter";
 @import "../../variables/breakpoint";
 @import "../functions/breakpoint";
 @import "./responsive";
 
-$gap-x-width: if($enable-grid-default-gutter, $gutter-x-width, 0);
-
-@mixin gen-col($size, $columns, $gutter) {
+@mixin gen-col($size, $columns) {
   flex: 0 0 auto;
   width: percentage($size / $columns);
 }
 
-@mixin make-grid-row($gutter: $gap-x-width) {
+@mixin make-row() {
   .row {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -#{abs($gutter)};
 
-    // reduce css file size, avoid defining this in each col[-*] class.
-    > * {
-      padding: 0 abs($gutter);
+    // Consider using gutter system than set column-gap.
+    @if $column-gap != 0 {
+      margin: 0 -#{abs($column-gap)};
+
+      // reduce css file size, avoid defining this in each col[-*] class.
+      > * {
+        padding: 0 abs($column-gap);
+      }
     }
   }
 }
 
-@mixin make-grid-columns(
-  $columns: $grid-columns,
-  $breakpoints: $breakpoints,
-  $gutter: $gap-x-width
-) {
+@mixin make-columns($columns: $row-columns) {
   .col {
     flex: 1 0 0%;
   }
@@ -36,14 +34,14 @@ $gap-x-width: if($enable-grid-default-gutter, $gutter-x-width, 0);
   @if $columns > 0 {
     @for $i from 1 through $columns {
       .col-#{$i} {
-        @include gen-col($i, $columns, $gutter);
+        @include gen-col($i, $columns);
       }
     }
 
     @include responsive-each() using ($breakpoint) {
       @for $i from 1 through $columns {
         .#{with-affix($breakpoint, "col-#{$i}")} {
-          @include gen-col($i, $columns, $gutter);
+          @include gen-col($i, $columns);
         }
       }
     }

@@ -1,5 +1,5 @@
 @import "../../variables/flex";
-@import "../../variables/grid";
+@import "../../variables/row";
 @import "../functions/breakpoint";
 @import "./responsive";
 
@@ -14,7 +14,7 @@
 
 @mixin make-flexs(
   $flex-class-map: $flex-class-map,
-  $flex-orders: $grid-columns,
+  $flex-orders: $row-columns,
   $flex-elastics: $flex-item-elastic
 ) {
   @each $classname, $prop-map in $flex-class-map {

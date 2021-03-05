@@ -1,3 +1,8 @@
+@import "../variables/row";
+@import "../lib/functions/ununit";
+
+$container-space: if(un-unit($column-gap) != 0, $column-gap, 1em);
+
 $container-max-widths: (
   sm: 375px,
   md: 720px,
