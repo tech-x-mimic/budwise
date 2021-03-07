@@ -1,25 +1,18 @@
 @import "../../variables/space";
+@import "../functions/map";
 @import "./responsive";
 
 @mixin make-spaces() {
   @each $classname, $props in $space-classname-props-map {
-    @each $tier, $scale in $space-tiers {
-      .#{$classname}-#{$tier} {
-        @each $prop in $props {
-          #{$prop}: $space-value * $scale;
-        }
-      }
-    }
-
     // Padding and Margin is design for configurable auto resposive.
-    @include responsive-each($include-unresponsive: false) using ($breakpoint) {
-      $breakpoint-space: map-get($space-breakpoints, $breakpoint);
+    @include responsive-each() using ($breakpoint) {
+      $space: get-or-default($space-breakpoints, $breakpoint, $space-value);
 
-      @each $tier, $scale in $space-tiers {
-        @if $breakpoint-space {
-          .#{$classname}-#{$tier} {
+      @each $i, $tier in $space-tiers {
+        @if $space {
+          .#{$classname}-#{$i} {
             @each $prop in $props {
-              #{$prop}: $breakpoint-space * $scale;
+              #{$prop}: $space * $tier;
             }
           }
         }

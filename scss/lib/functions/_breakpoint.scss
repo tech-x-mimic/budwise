@@ -6,7 +6,7 @@
 }
 
 @function with-affix($affix, $name, $prefix: $prefix) {
-  @if $affix == null or $affix == "" {
+  @if $affix == NONE {
     @return $name;
   }
 

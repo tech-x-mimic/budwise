@@ -1,0 +1,45 @@
+@import "../../variables/grid";
+@import "../functions/breakpoint";
+@import "../functions/map";
+@import "./responsive";
+
+@mixin make-grids(
+  $grid-class-map: $grid-class-map,
+  $grid-cheatsheet-map: $grid-cheatsheet-map,
+  $grid-rows: $grid-rows,
+  $grid-columns: $grid-columns
+) {
+  @include responsive-each() using ($breakpoint) {
+    @each $classname, $prop-map in $grid-class-map {
+      .#{with-affix($breakpoint, without-dot($classname))} {
+        @each $prop, $value in $prop-map {
+          #{get-or-default($grid-cheatsheet-map, $prop, $prop)}: $value;
+        }
+      }
+    }
+
+    @for $i from 1 through $grid-rows {
+      .#{with-affix($breakpoint, "rows-#{$i}")} {
+        grid-template-rows: repeat($i, minmax(0, 1fr));
+
+        @extend .#{with-affix($breakpoint, "auto-flow-col")};
+      }
+    }
+
+    @for $i from 1 through $grid-columns {
+      .#{with-affix($breakpoint, "cols-#{$i}")} {
+        grid-template-columns: repeat($i, minmax(0, 1fr));
+
+        @extend .#{with-affix($breakpoint, "auto-flow-row")};
+      }
+    }
+
+    @each $i, $tier in $space-tiers {
+      $gap: map-get($space-breakpoints, $breakpoint);
+
+      .#{with-affix($breakpoint, "gap-#{$i}")} {
+        gap: $gap * $tier;
+      }
+    }
+  }
+}

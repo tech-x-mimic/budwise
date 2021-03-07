@@ -1,0 +1,34 @@
+@import "./row";
+@import "./space";
+
+$grid-cheatsheet-map: (
+  gaf: grid-auto-flow,
+  g: gap,
+  rg: row-gap,
+  cg: column-gap
+) !default;
+
+$grid-class-map: (
+  "d-grid": (
+    display: grid
+  ),
+  auto-flow-row: (
+    gaf: row
+  ),
+  auto-flow-col: (
+    gaf: column
+  ),
+  auto-flow-row-dense: (
+    gaf: row dense
+  ),
+  auto-flow-col-dense: (
+    gaf: column dense
+  )
+);
+
+$grid-rows: $row-columns !default;
+$grid-columns: $row-columns !default;
+
+$grid-gap-value: $space-value !default;
+$grid-gap-tiers: $space-tiers !default;
+$grid-gap-breakpoints: $space-breakpoints !default;

@@ -1,0 +1,5 @@
+// Not support deep map.
+@function get-or-default($map, $key, $default) {
+  $value: map-get($map, $key);
+  @return if($value, $value, $default);
+}

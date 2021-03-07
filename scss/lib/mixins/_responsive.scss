@@ -7,15 +7,12 @@
     @media only screen and (min-width: $width) {
       @content;
     }
+  } @else {
+    @content;
   }
 }
 
-@mixin responsive-each($breakpoints: $media, $include-unresponsive: true) {
-  @if $include-unresponsive {
-    // prettier-ignore
-    @content(null);
-  }
-
+@mixin responsive-each($breakpoints: $media) {
   @each $breakpoint in $breakpoints {
     @include responsive($breakpoint) {
       // https://sass-lang.com/documentation/at-rules/mixin#passing-arguments-to-content-blocks

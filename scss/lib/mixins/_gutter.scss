@@ -1,23 +1,54 @@
 @import "../../variables/gutter";
+@import "../../lib/functions/map";
+@import "../../lib/functions/ununit";
+@import "./responsive";
 
-@mixin make-gutters($gutter-x: $gutter-x-width, $gutter-y: $gutter-y-height) {
-  @each $key, $scale in $gutter-tiers {
-    .g-#{$key},
-    .gx-#{$key} {
-      margin: 0 -#{abs($gutter-x * $scale)};
+@mixin make-gutters() {
+  @include responsive-each() using ($breakpoint) {
+    $gutter-x: get-or-default($gutter-x-breakpoints, $breakpoint, $gutter-x-width);
+    $gutter-y: get-or-default($gutter-y-breakpoints, $breakpoint, $gutter-y-height);
 
-      > * {
-        padding: 0 abs($gutter-x * $scale);
+    @each $i, $tier in $gutter-tiers {
+      $x: abs($gutter-x * $tier);
+      $y: abs($gutter-y * $tier);
+
+      .g-#{$i},
+      .gx-#{$i} {
+        margin-left: if(un-unit($x) != 0, -#{$x}, 0);
+        margin-right: if(un-unit($x) != 0, -#{$x}, 0);
+
+        > * {
+          padding-left: if(un-unit($x) != 0, $x, 0);
+          padding-right: if(un-unit($x) != 0, $x, 0);
+        }
+      }
+
+      .g-#{$i},
+      .gy-#{$i} {
+        @if $y == 0 {
+        } @else {
+          margin-top: if(un-unit($y) != 0, -#{$x}, 0);
+
+          > * {
+            margin-top: if(un-unit($y) != 0, $x, 0);
+          }
+        }
       }
     }
+  }
+}
 
-    .g-#{$key},
-    .gy-#{$key} {
-      margin-top: -#{abs($gutter-x * $scale)};
+@mixin space-temp($p, $c, $v) {
+  @if $v == 0 {
+    $p: 0;
+    > * {
+      $c: 0;
+    }
+  } @else {
+    margin-top: -#{$y};
 
-      > * {
-        margin-top: abs($gutter-x * $scale);
-      }
+    > * {
+      margin-top: $y;
     }
   }
 }

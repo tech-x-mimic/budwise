@@ -1,6 +1,7 @@
-$media: (sm, md, lg, xl) !default;
+$media: (NONE, sm, md, lg, xl) !default;
 
 $breakpoints: (
+  NONE: null,
   sm: 375px,
   md: 768px,
   lg: 1280px,

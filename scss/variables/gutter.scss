@@ -1,5 +1,9 @@
 @import "./space";
 
-$gutter-tiers: $space-tiers !default;
 $gutter-x-width: $space-value !default;
 $gutter-y-height: $space-value !default;
+
+$gutter-tiers: $space-tiers !default;
+
+$gutter-x-breakpoints: $space-breakpoints !default;
+$gutter-y-breakpoints: $space-breakpoints !default;

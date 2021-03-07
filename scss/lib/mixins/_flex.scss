@@ -1,36 +1,30 @@
 @import "../../variables/flex";
-@import "../../variables/row";
 @import "../functions/breakpoint";
+@import "../functions/map";
 @import "./responsive";
-
-@mixin gen-flex($props...) {
-  @each $key, $value in keywords($props) {
-    $prop-name: map-get($flex-props-cheatsheet, $key);
-    @if $prop-name {
-      #{$prop-name}: $value;
-    }
-  }
-}
 
 @mixin make-flexs(
   $flex-class-map: $flex-class-map,
-  $flex-orders: $row-columns,
-  $flex-elastics: $flex-item-elastic
+  $flex-cheatsheet-map: $flex-cheatsheet-map,
+  $flex-item-order: $flex-item-order,
+  $flex-item-elastic: $flex-item-elastic
 ) {
   @include responsive-each() using ($breakpoint) {
     @each $classname, $prop-map in $flex-class-map {
       .#{with-affix($breakpoint, without-dot($classname))} {
-        @include gen-flex($prop-map...);
+        @each $prop, $value in $prop-map {
+          #{get-or-default($flex-cheatsheet-map, $prop, $prop)}: $value;
+        }
       }
     }
 
-    @for $i from 0 through $flex-orders {
+    @for $i from 0 through $flex-item-order {
       .#{with-affix($breakpoint, "order-#{$i}")} {
         order: $i;
       }
     }
 
-    @for $i from 0 through $flex-elastics {
+    @for $i from 0 through $flex-item-elastic {
       .#{with-affix($breakpoint, "shrink-#{$i}")} {
         flex-shrink: $i;
       }

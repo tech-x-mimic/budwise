@@ -1,5 +1,6 @@
-$flex-props-cheatsheet: (
-  f: "flex",
+@import "./row";
+
+$flex-cheatsheet-map: (
   d: "flex-direction",
   w: "flex-wrap",
   x: "justify-content",
@@ -11,75 +12,65 @@ $flex-props-cheatsheet: (
   as: align-self
 ) !default;
 
-// key/value: classname/prop-map
+// flex box
 $flex-class-map: (
   "d-flex": (
-    f: flex
+    display: flex
   ),
   "d-inline-flex": (
-    f: inline-flex
+    display: inline-flex
   ),
   "flex-central": (
     x: center,
     y: center
   ),
-  "flex-row": (
+  "direction-row": (
     d: row
   ),
-  "flex-row-reverse": (
+  "direction-row-reverse": (
     d: row-reverse
   ),
-  "flex-column": (
+  "direction-column": (
     d: column
   ),
-  "flex-column-reverse": (
+  "direction-column-reverse": (
     d: column-reverse
   ),
-  "flex-x-start": (
+  "row-start": (
     x: start
   ),
-  "flex-x-end": (
+  "row-end": (
     x: end
   ),
-  "flex-x-center": (
+  "row-center": (
     x: center
   ),
-  "flex-x-between": (
+  "row-between": (
     x: space-between
   ),
-  "flex-x-around": (
+  "row-around": (
     x: space-around
   ),
-  "flex-x-evenly": (
+  "row-evenly": (
     x: space-evenly
   ),
-  "flex-y-start": (
+  "column-start": (
     y: start
   ),
-  "flex-y-end": (
+  "column-end": (
     y: end
   ),
-  "flex-y-center": (
+  "column-center": (
     y: center
   ),
-  "flex-y-baseline": (
+  "column-baseline": (
     y: baseline
   ),
-  "flex-y-stretch": (
+  "column-stretch": (
     y: stretch
-  ),
-  "flex-grow-1": (
-    g: 1
-  ),
-  "flex-grow-0": (
-    g: 0
-  ),
-  "flex-shrink-1": (
-    s: 1
-  ),
-  "flex-shrink-0": (
-    s: 0
   )
 ) !default;
 
+// flex item
 $flex-item-elastic: 2 !default;
+$flex-item-order: $row-columns !default;
