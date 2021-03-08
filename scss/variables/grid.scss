@@ -12,6 +12,9 @@ $grid-class-map: (
   "d-grid": (
     display: grid
   ),
+  "d-inline-grid": (
+    display: inline-grid
+  ),
   auto-flow-row: (
     gaf: row
   ),
@@ -26,9 +29,7 @@ $grid-class-map: (
   )
 );
 
-$grid-rows: $row-columns !default;
-$grid-columns: $row-columns !default;
+$grid-matrix: $row-columns !default;
 
-$grid-gap-value: $space-value !default;
 $grid-gap-tiers: $space-tiers !default;
 $grid-gap-breakpoints: $space-breakpoints !default;

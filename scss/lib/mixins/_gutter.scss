@@ -37,18 +37,3 @@
     }
   }
 }
-
-@mixin space-temp($p, $c, $v) {
-  @if $v == 0 {
-    $p: 0;
-    > * {
-      $c: 0;
-    }
-  } @else {
-    margin-top: -#{$y};
-
-    > * {
-      margin-top: $y;
-    }
-  }
-}

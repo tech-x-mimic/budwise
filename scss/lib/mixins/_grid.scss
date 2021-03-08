@@ -6,8 +6,9 @@
 @mixin make-grids(
   $grid-class-map: $grid-class-map,
   $grid-cheatsheet-map: $grid-cheatsheet-map,
-  $grid-rows: $grid-rows,
-  $grid-columns: $grid-columns
+  $grid-matrix: $grid-matrix,
+  $grid-gap-tiers: $grid-gap-tiers,
+  $grid-gap-breakpoints: $grid-gap-breakpoints
 ) {
   @include responsive-each() using ($breakpoint) {
     @each $classname, $prop-map in $grid-class-map {
@@ -18,27 +19,57 @@
       }
     }
 
-    @for $i from 1 through $grid-rows {
-      .#{with-affix($breakpoint, "rows-#{$i}")} {
-        grid-template-rows: repeat($i, minmax(0, 1fr));
-
-        @extend .#{with-affix($breakpoint, "auto-flow-col")};
-      }
+    $grid-overflow-auto: with-affix($breakpoint, "grid-overflow-auto");
+    .#{$grid-overflow-auto} {
+      grid-auto-rows: 1fr;
+      grid-auto-columns: 1fr;
     }
 
-    @for $i from 1 through $grid-columns {
-      .#{with-affix($breakpoint, "cols-#{$i}")} {
+    @for $i from 1 through $grid-matrix {
+      $grid-i: with-affix($breakpoint, "grid-#{$i}");
+
+      .#{$grid-i} {
+        grid-template-rows: repeat($i, minmax(0, 1fr));
         grid-template-columns: repeat($i, minmax(0, 1fr));
 
-        @extend .#{with-affix($breakpoint, "auto-flow-row")};
+        @extend .#{$grid-overflow-auto};
+      }
+
+      @for $j from 1 through $grid-matrix {
+        .#{with-affix($breakpoint, "grid-#{$i}-#{$j}")} {
+          @if $i == $j {
+            @extend .#{$grid-i};
+          } @else {
+            grid-template-columns: repeat($i, minmax(0, 1fr));
+            grid-template-rows: repeat($j, minmax(0, 1fr));
+
+            @extend .#{$grid-overflow-auto};
+          }
+        }
+      }
+
+      .#{with-affix($breakpoint, "rows-#{$i}")} {
+        grid-template-rows: repeat($i, minmax(0, 1fr));
+      }
+
+      .#{with-affix($breakpoint, "cols-#{$i}")} {
+        grid-template-columns: repeat($i, minmax(0, 1fr));
       }
     }
 
-    @each $i, $tier in $space-tiers {
-      $gap: map-get($space-breakpoints, $breakpoint);
+    @each $i, $tier in $grid-gap-tiers {
+      $gap: map-get($grid-gap-breakpoints, $breakpoint) * $tier;
 
-      .#{with-affix($breakpoint, "gap-#{$i}")} {
-        gap: $gap * $tier;
+      .gap-#{$i} {
+        gap: $gap;
+      }
+
+      .gap-x-#{$i} {
+        column-gap: $gap;
+      }
+
+      .gap-y-#{$i} {
+        row-gap: $gap;
       }
     }
   }
