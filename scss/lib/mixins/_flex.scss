@@ -1,37 +1,44 @@
-@import "../../variables/flex";
+@import "./responsive";
 @import "../functions/breakpoint";
 @import "../functions/map";
-@import "./responsive";
+@import "../../variables/flex";
 
-@mixin make-flexs(
-  $flex-class-map: $flex-class-map,
-  $flex-cheatsheet-map: $flex-cheatsheet-map,
-  $flex-item-order: $flex-item-order,
-  $flex-item-elastic: $flex-item-elastic
-) {
+@mixin make-flexs() {
   @include responsive-each() using ($breakpoint) {
-    @each $classname, $prop-map in $flex-class-map {
-      .#{with-affix($breakpoint, without-dot($classname))} {
-        @each $prop, $value in $prop-map {
-          #{get-or-default($flex-cheatsheet-map, $prop, $prop)}: $value;
-        }
+    @include map-flex-class($breakpoint);
+
+    @include flex-item-order($breakpoint);
+
+    @include flex-item-elastic($breakpoint);
+  }
+}
+
+@mixin map-flex-class($breakpoint) {
+  @each $classname, $prop-map in $flex-class-map {
+    .#{with-affix($breakpoint, without-dot($classname))} {
+      @each $prop, $value in $prop-map {
+        #{get-or-default($flex-cheatsheet-map, $prop, $prop)}: $value;
       }
     }
+  }
+}
 
-    @for $i from 0 through $flex-item-order {
-      .#{with-affix($breakpoint, "order-#{$i}")} {
-        order: $i;
-      }
+@mixin flex-item-order($breakpoint) {
+  @for $i from 0 through $flex-item-order {
+    .#{with-affix($breakpoint, "order-#{$i}")} {
+      order: $i;
+    }
+  }
+}
+
+@mixin flex-item-elastic($breakpoint) {
+  @for $i from 0 through $flex-item-elastic {
+    .#{with-affix($breakpoint, "shrink-#{$i}")} {
+      flex-shrink: $i;
     }
 
-    @for $i from 0 through $flex-item-elastic {
-      .#{with-affix($breakpoint, "shrink-#{$i}")} {
-        flex-shrink: $i;
-      }
-
-      .#{with-affix($breakpoint, "grow-#{$i}")} {
-        flex-grow: $i;
-      }
+    .#{with-affix($breakpoint, "grow-#{$i}")} {
+      flex-grow: $i;
     }
   }
 }

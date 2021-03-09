@@ -1,8 +1,6 @@
-@import "../../variables/row";
-@import "../../variables/gutter";
-@import "../../variables/breakpoint";
-@import "../functions/breakpoint";
 @import "./responsive";
+@import "../functions/breakpoint";
+@import "../../variables/row";
 
 @mixin gen-col($size, $columns) {
   flex: 0 0 auto;
@@ -26,17 +24,15 @@
   }
 }
 
-@mixin make-columns($columns: $row-columns) {
+@mixin make-columns() {
   .col {
     flex: 1 0 0%;
   }
 
-  @if $columns > 0 {
-    @include responsive-each() using ($breakpoint) {
-      @for $i from 1 through $columns {
-        .#{with-affix($breakpoint, "col-#{$i}")} {
-          @include gen-col($i, $columns);
-        }
+  @include responsive-each() using ($breakpoint) {
+    @for $i from 1 through $row-columns {
+      .#{with-affix($breakpoint, "col-#{$i}")} {
+        @include gen-col($i, $row-columns);
       }
     }
   }

@@ -3,34 +3,34 @@
 @import "../functions/breakpoint";
 @import "./responsive";
 
-@mixin gen-container($space) {
-  width: 100%;
-  padding: 0 $space;
-  margin: 0 auto;
+@mixin make-containers() {
+  @include container(if($container-space > $column-gap, $container-space, $column-gap));
+
+  @include container-max-height();
 }
 
-@mixin make-containers($space: $container-space) {
+@mixin container($space) {
   .ctn,
   .container,
   .ctn-f,
   .container-fluid {
-    @include gen-container($space);
+    width: 100%;
+    padding: 0 $space;
+    margin: 0 auto;
   }
+}
 
-  @each $breakpoint in $media {
-    $container-max-width: map-get($container-max-widths, $breakpoint);
+@mixin container-max-height {
+  @each $breakpoint, $max-width in $container-max-width-map {
+    $classname: #{with-affixs($breakpoint, "ctn", "container")};
 
-    @if ($container-max-width) {
-      $classname: #{with-affixs($breakpoint, "ctn", "container")};
+    #{$classname} {
+      @extend .container;
+    }
 
+    @include responsive($breakpoint) {
       #{$classname} {
-        @extend .container-fluid;
-      }
-
-      @include responsive($breakpoint) {
-        #{$classname} {
-          max-width: $container-max-width;
-        }
+        max-width: $max-width;
       }
     }
   }

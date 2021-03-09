@@ -1,7 +1,7 @@
 @import "../../variables/breakpoint";
 
-@mixin responsive($breakpoint, $skip: false) {
-  $width: map-get($breakpoints, $breakpoint);
+@mixin responsive($breakpoint) {
+  $width: map-get($breakpoint-map, $breakpoint);
 
   @if ($width) {
     @media only screen and (min-width: $width) {
@@ -12,10 +12,9 @@
   }
 }
 
-@mixin responsive-each($breakpoints: $media) {
-  @each $breakpoint in $breakpoints {
+@mixin responsive-each() {
+  @each $breakpoint, $_ in $breakpoint-map {
     @include responsive($breakpoint) {
-      // https://sass-lang.com/documentation/at-rules/mixin#passing-arguments-to-content-blocks
       // prettier-ignore
       @content($breakpoint);
     }

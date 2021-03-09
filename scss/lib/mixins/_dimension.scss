@@ -1,47 +1,40 @@
-@import "../../variables/dimension";
-@import "../functions/breakpoint";
 @import "./responsive";
+@import "../functions/breakpoint";
+@import "../../variables/dimension";
 
-@mixin make-dimensions(
-  $width-map: $deimension-width-map,
-  $height-map: $deimension-height-map,
-  $max-width-map: $deimension-max-width-map,
-  $max-height-map: $deimension-max-height-map,
-  $min-width-map: $deimension-min-width-map,
-  $min-height-map: $deimension-min-height-map
-) {
+@mixin make-dimensions() {
   @include responsive-each() using ($breakpoint) {
-    @each $key, $value in $width-map {
+    @each $key, $value in $deimension-width-map {
       .#{with-affix($breakpoint, "w-#{$key}")} {
         width: $value;
       }
     }
 
-    @each $key, $value in $height-map {
+    @each $key, $value in $deimension-height-map {
       .#{with-affix($breakpoint, "h-#{$key}")} {
         height: $value;
       }
     }
 
-    @each $key, $value in $max-width-map {
+    @each $key, $value in $deimension-max-width-map {
       .#{with-affix($breakpoint, "max-w-#{$key}")} {
         max-width: $value;
       }
     }
 
-    @each $key, $value in $max-height-map {
+    @each $key, $value in $deimension-max-height-map {
       .#{with-affix($breakpoint, "max-h-#{$key}")} {
         max-height: $value;
       }
     }
 
-    @each $key, $value in $min-width-map {
+    @each $key, $value in $deimension-min-width-map {
       .#{with-affix($breakpoint, "min-w-#{$key}")} {
         min-width: $value;
       }
     }
 
-    @each $key, $value in $min-height-map {
+    @each $key, $value in $deimension-min-height-map {
       .#{with-affix($breakpoint, "min-h-#{$key}")} {
         min-height: $value;
       }

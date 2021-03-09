@@ -1,18 +1,19 @@
-@import "./row";
 @import "./space";
 
 $grid-cheatsheet-map: (
   gaf: grid-auto-flow,
   g: gap,
   rg: row-gap,
-  cg: column-gap
+  cg: column-gap,
+  gac: grid-auto-columns,
+  gar: grid-auto-rows
 ) !default;
 
 $grid-class-map: (
-  "d-grid": (
+  d-grid: (
     display: grid
   ),
-  "d-inline-grid": (
+  d-inline-grid: (
     display: inline-grid
   ),
   auto-flow-row: (
@@ -26,11 +27,16 @@ $grid-class-map: (
   ),
   auto-flow-col-dense: (
     gaf: column dense
+  ),
+  auto-cols-fr: (
+    gac: 1fr
+  ),
+  auto-rows-fr: (
+    gar: 1fr
   )
 );
 
-$grid-rows: $row-columns !default;
-$grid-cols: $row-columns !default;
+$grids: 12 !default;
 
-$grid-gap-tiers: $space-tiers !default;
-$grid-gap-breakpoints: $space-breakpoints !default;
+$grid-gap-tiers: $space-tier-map !default;
+$grid-gap-breakpoints: $space-breakpoint-map !default;

@@ -1,6 +1,4 @@
-$media: (NONE, sm, md, lg, xl) !default;
-
-$breakpoints: (
+$breakpoint-map: (
   NONE: null,
   sm: 375px,
   md: 768px,

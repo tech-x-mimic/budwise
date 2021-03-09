@@ -1,9 +1,8 @@
 @import "../variables/row";
-@import "../lib/functions/ununit";
 
-$container-space: if(un-unit($column-gap) != 0, $column-gap, 1em);
+$container-space: $column-gap !default;
 
-$container-max-widths: (
+$container-max-width-map: (
   sm: 375px,
   md: 720px,
   lg: 1120px,

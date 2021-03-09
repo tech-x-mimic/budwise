@@ -1,6 +1,6 @@
-$space-value: 1em !default;
+$space-default-value: 1em !default;
 
-$space-tiers: (
+$space-tier-map: (
   0: 0,
   1: 0.25,
   2: 0.5,
@@ -9,8 +9,8 @@ $space-tiers: (
   5: 4
 ) !default;
 
-$space-breakpoints: (
-  NONE: $space-value,
+$space-breakpoint-map: (
+  NONE: $space-default-value,
   sm: 0.5em,
   md: 0.8em,
   lg: 1em,

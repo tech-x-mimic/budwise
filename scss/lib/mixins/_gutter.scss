@@ -1,39 +1,45 @@
-@import "../../variables/gutter";
-@import "../../lib/functions/map";
-@import "../../lib/functions/ununit";
 @import "./responsive";
+@import "../functions/map";
+@import "../functions/ununit";
+@import "../../variables/gutter";
 
 @mixin make-gutters() {
   @include responsive-each() using ($breakpoint) {
-    $gutter-x: get-or-default($gutter-x-breakpoints, $breakpoint, $gutter-x-width);
-    $gutter-y: get-or-default($gutter-y-breakpoints, $breakpoint, $gutter-y-height);
+    $gutter: get-or-default($gutter-breakpoint-map, $breakpoint, $gutter-default-value);
 
-    @each $i, $tier in $gutter-tiers {
-      $x: abs($gutter-x * $tier);
-      $y: abs($gutter-y * $tier);
+    @each $i, $tier in $gutter-tier-map {
+      $gutter-i: abs($gutter * $tier);
 
-      .g-#{$i},
-      .gx-#{$i} {
-        margin-left: if(un-unit($x) != 0, -#{$x}, 0);
-        margin-right: if(un-unit($x) != 0, -#{$x}, 0);
+      @include horizontal-gutter($i, $gutter-i);
 
-        > * {
-          padding-left: if(un-unit($x) != 0, $x, 0);
-          padding-right: if(un-unit($x) != 0, $x, 0);
-        }
-      }
-
-      .g-#{$i},
-      .gy-#{$i} {
-        @if $y == 0 {
-        } @else {
-          margin-top: if(un-unit($y) != 0, -#{$x}, 0);
-
-          > * {
-            margin-top: if(un-unit($y) != 0, $x, 0);
-          }
-        }
-      }
+      @include vertical-gutter($i, $gutter-i);
     }
   }
+}
+
+@mixin horizontal-gutter($i, $value) {
+  .g-#{$i},
+  .gx-#{$i} {
+    margin-left: format(-$value);
+    margin-right: format(-$value);
+    > * {
+      padding-left: format($value);
+      padding-right: format($value);
+    }
+  }
+}
+
+@mixin vertical-gutter($i, $value) {
+  .g-#{$i},
+  .gy-#{$i} {
+    margin-top: format(-$value);
+
+    > * {
+      margin-top: format($value);
+    }
+  }
+}
+
+@function format($value) {
+  @return if(un-unit($value) != 0, $value, 0);
 }
