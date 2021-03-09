@@ -29,7 +29,8 @@ $grid-class-map: (
   )
 );
 
-$grid-matrix: $row-columns !default;
+$grid-rows: $row-columns !default;
+$grid-cols: $row-columns !default;
 
 $grid-gap-tiers: $space-tiers !default;
 $grid-gap-breakpoints: $space-breakpoints !default;

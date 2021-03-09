@@ -3,57 +3,86 @@
 @import "../functions/map";
 @import "./responsive";
 
-@mixin make-grids(
-  $grid-class-map: $grid-class-map,
-  $grid-cheatsheet-map: $grid-cheatsheet-map,
-  $grid-matrix: $grid-matrix,
-  $grid-gap-tiers: $grid-gap-tiers,
-  $grid-gap-breakpoints: $grid-gap-breakpoints
-) {
+@mixin make-grids() {
   @include responsive-each() using ($breakpoint) {
+    $auto-rows-fr: with-affix($breakpoint, "auto-rows-fr");
+    $auto-cols-fr: with-affix($breakpoint, "auto-cols-fr");
+    .#{$auto-rows-fr} {
+      grid-auto-rows: 1fr;
+    }
+    .#{$auto-cols-fr} {
+      grid-auto-columns: 1fr;
+    }
+
+    @for $i from 1 through max($grid-rows, $grid-cols) {
+      @if $i <= $grid-rows {
+        .#{with-affix($breakpoint, "rows-#{$i}")} {
+          @extend .#{with-affix($breakpoint, "template-rows-#{$i}")};
+          // grid-template-rows: repeat($i, minmax(0, 1fr));
+          grid-auto-flow: column dense;
+          @extend .#{$auto-cols-fr};
+        }
+
+        .#{with-affix($breakpoint, "template-rows-#{$i}")} {
+          grid-template-rows: repeat($i, minmax(0, 1fr));
+        }
+
+        .#{with-affix($breakpoint, "row-start-#{$i}")} {
+          grid-row-start: $i;
+        }
+        .#{with-affix($breakpoint, "row-end-#{$i}")} {
+          grid-row-end: $i;
+        }
+
+        @if $i == $grid-rows {
+          $row-end: $i + 1;
+          .#{with-affix($breakpoint, "row-start-#{$row-end}")} {
+            grid-row-start: $row-end;
+          }
+          .#{with-affix($breakpoint, "row-end-#{$row-end}")} {
+            grid-row-end: $row-end;
+          }
+        }
+      }
+
+      @if $i <= $grid-cols {
+        $template-cols-i: with-affix($breakpoint, "template-cols-#{$i}");
+
+        .#{with-affix($breakpoint, "cols-#{$i}")} {
+          grid-auto-flow: row dense;
+          @extend .#{$auto-rows-fr};
+          @extend .#{$template-cols-i};
+        }
+
+        .#{$template-cols-i} {
+          grid-template-columns: repeat($i, minmax(0, 1fr));
+        }
+
+        .#{with-affix($breakpoint, "col-start-#{$i}")} {
+          grid-column-start: $i;
+        }
+        .#{with-affix($breakpoint, "col-end-#{$i}")} {
+          grid-column-end: $i;
+        }
+
+        @if $i == $grid-rows {
+          $col-end: $i + 1;
+          .#{with-affix($breakpoint, "col-start-#{$col-end}")} {
+            grid-column-start: $col-end;
+          }
+          .#{with-affix($breakpoint, "col-end-#{$col-end}")} {
+            grid-column-end: $col-end;
+          }
+        }
+      }
+    }
+
+    // Put class-map after .cols-i for priority purpose.
     @each $classname, $prop-map in $grid-class-map {
       .#{with-affix($breakpoint, without-dot($classname))} {
         @each $prop, $value in $prop-map {
           #{get-or-default($grid-cheatsheet-map, $prop, $prop)}: $value;
         }
-      }
-    }
-
-    $grid-overflow-auto: with-affix($breakpoint, "grid-overflow-auto");
-    .#{$grid-overflow-auto} {
-      grid-auto-rows: 1fr;
-      grid-auto-columns: 1fr;
-    }
-
-    @for $i from 1 through $grid-matrix {
-      $grid-i: with-affix($breakpoint, "grid-#{$i}");
-
-      .#{$grid-i} {
-        grid-template-rows: repeat($i, minmax(0, 1fr));
-        grid-template-columns: repeat($i, minmax(0, 1fr));
-
-        @extend .#{$grid-overflow-auto};
-      }
-
-      @for $j from 1 through $grid-matrix {
-        .#{with-affix($breakpoint, "grid-#{$i}-#{$j}")} {
-          @if $i == $j {
-            @extend .#{$grid-i};
-          } @else {
-            grid-template-columns: repeat($i, minmax(0, 1fr));
-            grid-template-rows: repeat($j, minmax(0, 1fr));
-
-            @extend .#{$grid-overflow-auto};
-          }
-        }
-      }
-
-      .#{with-affix($breakpoint, "rows-#{$i}")} {
-        grid-template-rows: repeat($i, minmax(0, 1fr));
-      }
-
-      .#{with-affix($breakpoint, "cols-#{$i}")} {
-        grid-template-columns: repeat($i, minmax(0, 1fr));
       }
     }
 
