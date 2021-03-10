@@ -29,7 +29,7 @@
     flex: 1 0 0%;
   }
 
-  @include responsive-each() using ($breakpoint) {
+  @include responsives() using ($breakpoint) {
     @for $i from 1 through $row-columns {
       .#{with-affix($breakpoint, "col-#{$i}")} {
         @include gen-col($i, $row-columns);

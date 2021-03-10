@@ -2,25 +2,21 @@
 @import "../functions/map";
 @import "../../variables/space";
 
-@mixin map-space-class($breakpoint) {
-  @each $classname, $props in $space-classname-props-map {
-    $space: get-or-default($space-breakpoint-map, $breakpoint, $space-default-value);
+@mixin make-space() {
+  // Padding and Margin is design for configurable auto resposive.
+  @include responsives() using ($breakpoint) {
+    @each $classname, $props in $space-classname-props-map {
+      $space: get-or-default($space-breakpoint-map, $breakpoint, $space-default-value);
 
-    @each $i, $tier in $space-tier-map {
-      @if $space {
-        .#{$classname}-#{$i} {
-          @each $prop in $props {
-            #{$prop}: $space * $tier;
+      @each $i, $tier in $space-tier-map {
+        @if $space {
+          .#{$classname}-#{$i} {
+            @each $prop in $props {
+              #{$prop}: $space * $tier;
+            }
           }
         }
       }
     }
-  }
-}
-
-@mixin make-space() {
-  // Padding and Margin is design for configurable auto resposive.
-  @include responsive-each() using ($breakpoint) {
-    @include map-space-class($breakpoint);
   }
 }

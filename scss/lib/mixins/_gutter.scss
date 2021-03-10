@@ -4,11 +4,11 @@
 @import "../../variables/gutter";
 
 @mixin make-gutters() {
-  @include responsive-each() using ($breakpoint) {
-    $gutter: get-or-default($gutter-breakpoint-map, $breakpoint, $gutter-default-value);
-
+  @include responsives() using ($breakpoint) {
     @each $i, $tier in $gutter-tier-map {
-      $gutter-i: abs($gutter * $tier);
+      $gutter-i: abs(
+        get-or-default($gutter-breakpoint-map, $breakpoint, $gutter-default-value) * $tier
+      );
 
       @include horizontal-gutter($i, $gutter-i);
 

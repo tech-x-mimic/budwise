@@ -4,7 +4,7 @@
 @import "../../variables/flex";
 
 @mixin make-flexs() {
-  @include responsive-each() using ($breakpoint) {
+  @include responsives() using ($breakpoint) {
     @include map-flex-class($breakpoint);
 
     @include flex-item-order($breakpoint);

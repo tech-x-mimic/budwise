@@ -3,7 +3,7 @@
 @import "../../variables/dimension";
 
 @mixin make-dimensions() {
-  @include responsive-each() using ($breakpoint) {
+  @include responsives() using ($breakpoint) {
     @each $key, $value in $deimension-width-map {
       .#{with-affix($breakpoint, "w-#{$key}")} {
         width: $value;

@@ -4,7 +4,7 @@
 @import "../../variables/grid";
 
 @mixin make-grids() {
-  @include responsive-each() using ($breakpoint) {
+  @include responsives() using ($breakpoint) {
     @include map-grid-class($breakpoint);
 
     @include grid-gap($breakpoint);

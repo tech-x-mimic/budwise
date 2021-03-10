@@ -1,4 +1,5 @@
 @import "../../variables/breakpoint";
+@import "../functions/breakpoint";
 
 @mixin responsive($breakpoint) {
   $width: map-get($breakpoint-map, $breakpoint);
@@ -12,11 +13,11 @@
   }
 }
 
-@mixin responsive-each($args...) {
-  @each $breakpoint, $_ in $breakpoint-map {
+@mixin responsives($breakpoints: map-keys($breakpoint-map)) {
+  @each $breakpoint in $breakpoints {
     @include responsive($breakpoint) {
       // prettier-ignore
-      @content($breakpoint, $args...);
+      @content($breakpoint);
     }
   }
 }
