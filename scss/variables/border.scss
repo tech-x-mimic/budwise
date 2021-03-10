@@ -1,0 +1,26 @@
+$border-color: #e3e3e3;
+
+$border-width-map: (
+  0: 0,
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px
+) !default;
+
+$border-classname-props-map: (
+  border: border,
+  border-l: border-left,
+  border-r: border-right,
+  border-t: border-top,
+  border-b: border-bottom,
+  border-x: (
+    border-left,
+    border-right
+  ),
+  border-y: (
+    border-top,
+    border-bottom
+  )
+) !default;

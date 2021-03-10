@@ -1,0 +1,22 @@
+@import "./responsive";
+@import "./interactive";
+@import "../functions/breakpoint";
+@import "../../variables/border";
+
+@mixin make-border() {
+  @include responsives() using ($breakpoint) {
+    @include border-width($breakpoint);
+  }
+}
+
+@mixin border-width($breakpoint) {
+  @each $class, $props in $border-classname-props-map {
+    @each $i, $value in $border-width-map {
+      @include hover(with-affix($breakpoint, "#{$class}-#{$i}")) {
+        @each $prop in $props {
+          #{$prop}: #{$value} solid #{$border-color};
+        }
+      }
+    }
+  }
+}

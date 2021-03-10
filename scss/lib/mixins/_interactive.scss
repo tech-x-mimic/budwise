@@ -1,0 +1,11 @@
+@mixin hover($class) {
+  .#{$class} {
+    @content;
+  }
+
+  .#{$class}_hover {
+    &:hover {
+      @extend .#{$class};
+    }
+  }
+}
