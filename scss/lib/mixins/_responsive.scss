@@ -12,11 +12,11 @@
   }
 }
 
-@mixin responsive-each() {
+@mixin responsive-each($args...) {
   @each $breakpoint, $_ in $breakpoint-map {
     @include responsive($breakpoint) {
       // prettier-ignore
-      @content($breakpoint);
+      @content($breakpoint, $args...);
     }
   }
 }
