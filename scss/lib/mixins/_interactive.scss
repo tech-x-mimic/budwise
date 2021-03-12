@@ -1,11 +1,55 @@
-@mixin hover($class) {
+@import "../functions/breakpoint";
+
+@mixin interactive($key, $class) {
   .#{$class} {
     @content;
   }
 
-  .#{$class}_hover {
-    &:hover {
+  .#{with-affix($key, $class)} {
+    &:#{$key} {
       @extend .#{$class};
     }
+  }
+}
+
+@mixin hover($class) {
+  @include interactive("hover", $class) {
+    @content;
+  }
+}
+
+@mixin active($class) {
+  @include interactive("active", $class) {
+    @content;
+  }
+}
+
+@mixin focus($class) {
+  @include interactive("focus", $class) {
+    @content;
+  }
+}
+
+@mixin enabled($class) {
+  @include interactive("enabled", $class) {
+    @content;
+  }
+}
+
+@mixin disabled($class) {
+  @include interactive("disabled", $class) {
+    @content;
+  }
+}
+
+@mixin checked($class) {
+  @include interactive("checked", $class) {
+    @content;
+  }
+}
+
+@mixin visited($class) {
+  @include interactive("visited", $class) {
+    @content;
   }
 }

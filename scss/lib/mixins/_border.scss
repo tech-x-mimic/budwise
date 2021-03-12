@@ -6,15 +6,28 @@
 @mixin make-border() {
   @include responsives() using ($breakpoint) {
     @include border-width($breakpoint);
+    @include border-raduis($breakpoint);
   }
 }
 
 @mixin border-width($breakpoint) {
-  @each $class, $props in $border-classname-props-map {
+  @each $class, $props in $border-width-classname-props-map {
     @each $i, $value in $border-width-map {
-      @include hover(with-affix($breakpoint, "#{$class}-#{$i}")) {
+      .#{with-affix($breakpoint, "#{$class}-#{$i}")} {
         @each $prop in $props {
-          #{$prop}: #{$value} solid #{$border-color};
+          #{$prop}: #{$value};
+        }
+      }
+    }
+  }
+}
+
+@mixin border-raduis($breakpoint) {
+  @each $class, $props in $border-radius-classname-props-map {
+    @each $i, $value in $border-radius-map {
+      .#{with-affix($breakpoint, "#{$class}-#{$i}")} {
+        @each $prop in $props {
+          #{$prop}: #{$value};
         }
       }
     }

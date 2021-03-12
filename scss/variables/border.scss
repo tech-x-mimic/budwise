@@ -1,5 +1,3 @@
-$border-color: #e3e3e3;
-
 $border-width-map: (
   0: 0,
   1: 1px,
@@ -9,18 +7,50 @@ $border-width-map: (
   5: 5px
 ) !default;
 
-$border-classname-props-map: (
-  border: border,
-  border-l: border-left,
-  border-r: border-right,
-  border-t: border-top,
-  border-b: border-bottom,
+$border-width-classname-props-map: (
+  border: border-width,
+  border-l: border-left-width,
+  border-r: border-right-width,
+  border-t: border-top-width,
+  border-b: border-bottom-width,
   border-x: (
-    border-left,
-    border-right
+    border-left-width,
+    border-right-width
   ),
   border-y: (
-    border-top,
-    border-bottom
+    border-top-width,
+    border-bottom-width
   )
 ) !default;
+
+$border-radius-map: (
+  0: 0,
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  5: 5px,
+  8: 8px,
+  13: 13px,
+  em: 1em,
+  full: 50%
+);
+
+$border-radius-classname-props-map: (
+  rounded: border-radius,
+  rounded-t: (
+    border-top-left-radius,
+    border-top-right-radius
+  ),
+  rounded-b: (
+    border-bottom-left-radius,
+    border-bottom-right-radius
+  ),
+  rounded-l: (
+    border-top-left-radius,
+    border-bottom-left-radius
+  ),
+  rounded-r: (
+    border-top-right-radius,
+    border-bottom-right-radius
+  )
+);
