@@ -1,0 +1,10 @@
+@import "./ununit";
+
+/**
+ * Remove the zero value unit
+ * zeroify(0em) -> 0;
+ * zeroify(1em) -> 1em;
+ */
+@function zeroify($value) {
+  @return if(un-unit($value) != 0, $value, 0);
+}

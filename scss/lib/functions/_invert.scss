@@ -1,0 +1,8 @@
+/**
+ * Inverted number.
+ * invert-number(1px) -> -1px;
+ * invert-number(-1em) -> 1em;
+ */
+@function invert-number($num) {
+  @return $num * -1;
+}

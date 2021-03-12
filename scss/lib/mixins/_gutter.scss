@@ -1,14 +1,14 @@
 @import "./responsive";
 @import "../functions/map";
 @import "../functions/ununit";
+@import "../functions/invert";
+@import "../functions/zeroify";
 @import "../../variables/gutter";
 
 @mixin make-gutters() {
   @include responsives() using ($breakpoint) {
     @each $i, $tier in $gutter-tier-map {
-      $gutter-i: abs(
-        get-or-default($gutter-breakpoint-map, $breakpoint, $gutter-default-value) * $tier
-      );
+      $gutter-i: get-or-default($gutter-breakpoint-map, $breakpoint, $gutter-default-value) * $tier;
 
       @include horizontal-gutter($i, $gutter-i);
 
@@ -18,28 +18,30 @@
 }
 
 @mixin horizontal-gutter($i, $value) {
+  $positive: zeroify(abs($value));
+  $nagetive: invert-number($positive);
+
   .g-#{$i},
   .gx-#{$i} {
-    margin-left: format(-$value);
-    margin-right: format(-$value);
+    margin-left: $nagetive;
+    margin-right: $nagetive;
     > * {
-      padding-left: format($value);
-      padding-right: format($value);
+      padding-left: $positive;
+      padding-right: $positive;
     }
   }
 }
 
 @mixin vertical-gutter($i, $value) {
+  $positive: zeroify(abs($value));
+  $nagetive: invert-number($positive);
+
   .g-#{$i},
   .gy-#{$i} {
-    margin-top: format(-$value);
+    margin-top: $nagetive;
 
     > * {
-      margin-top: format($value);
+      margin-top: $positive;
     }
   }
-}
-
-@function format($value) {
-  @return if(un-unit($value) != 0, $value, 0);
 }
