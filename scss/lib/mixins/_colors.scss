@@ -1,0 +1,22 @@
+@import "../../variables/colors";
+
+@mixin make-colors {
+  @each $name, $color in $color-map {
+    @include palette(1, 4, $name, $color);
+
+    .#{"" + $name},
+    .#{"" + $name}-500 {
+      color: rgba($color, 0.5);
+    }
+
+    @include palette(6, 9, $name, $color);
+  }
+}
+
+@mixin palette($from, $to, $name, $color) {
+  @for $i from $from through $to {
+    .#{"" + $name}-#{$i}00 {
+      color: rgba($color, $i / 10);
+    }
+  }
+}
