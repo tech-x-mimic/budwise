@@ -1,22 +1,27 @@
+@import "../functions/color";
 @import "../../variables/colors";
 
 @mixin make-colors {
   @each $name, $color in $color-map {
-    @include palette(1, 4, $name, $color);
+    $name: "" + $name;
 
-    .#{"" + $name},
-    .#{"" + $name}-500 {
-      color: rgba($color, 0.5);
+    @for $i from 1 through 4 {
+      .#{$name}-#{$i}00 {
+        color: color-mix($color, white, ($i * 2 / 10) * 100%);
+      }
     }
 
-    @include palette(6, 9, $name, $color);
-  }
-}
+    .#{$name} {
+      color: $color;
+      &-500 {
+        @extend .#{$name};
+      }
+    }
 
-@mixin palette($from, $to, $name, $color) {
-  @for $i from $from through $to {
-    .#{"" + $name}-#{$i}00 {
-      color: rgba($color, $i / 10);
+    @for $i from 1 through 4 {
+      .#{$name}-#{$i + 5}00 {
+        color: color-mix($color, black, (1 - $i * 2 / 10) * 100%);
+      }
     }
   }
 }

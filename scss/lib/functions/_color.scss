@@ -1,0 +1,8 @@
+@function color-mix($color, $mixture, $percentage) {
+  // tint, tone, shade
+  $mixtures: (white, gray, black);
+  @if (index($mixtures, $mixture) == null) {
+    @error "paint param must be one of (#{$mixtures})";
+  }
+  @return mix($color, $mixture, $percentage);
+}
