@@ -8,17 +8,22 @@
 }
 
 @mixin make-row() {
+  $positive: abs($column-gap);
+  $nagetive: invert-number($positive);
+
   .row {
     display: flex;
     flex-wrap: wrap;
 
     // Consider using gutter system than set column-gap.
     @if $column-gap != 0 {
-      margin: 0 -#{abs($column-gap)};
+      margin-left: $nagetive;
+      margin-right: $nagetive;
 
       // reduce css file size, avoid defining this in each col[-*] class.
       > * {
-        padding: 0 abs($column-gap);
+        padding-left: $positive;
+        padding-right: $positive;
       }
     }
   }
@@ -27,6 +32,11 @@
 @mixin make-columns() {
   .col {
     flex: 1 0 0%;
+  }
+
+  .col-auto {
+    flex: 0 0 auto;
+    width: auto;
   }
 
   @include responsives() using ($breakpoint) {

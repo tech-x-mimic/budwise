@@ -4,7 +4,7 @@
 @import "./responsive";
 
 @mixin make-containers() {
-  @include container(if($container-space > $column-gap, $container-space, $column-gap));
+  @include container(if($container-space != $column-gap, $container-space, $column-gap));
 
   @include container-max-height();
 }
