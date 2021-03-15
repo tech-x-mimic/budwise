@@ -7,7 +7,7 @@
     "build": "npm run sass && npm run prefixer && npm run minify",
     "minify": "cleancss --input-source-map build/budwise.css.map -o build/budwise.min.css build/budwise.css",
     "sass": "sass -s expanded --no-error-css --no-embed-sources --no-embed-source-map scss/index.scss build/budwise.css",
-    "prefixer": "postcss --use autoprefixer --replace build/budwise.css",
+    "prefixer": "postcss --replace build/budwise.css",
     "stylelint": "stylelint \"**/*.scss\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,6 +23,7 @@
     "node-sass": "^5.0.0",
     "postcss": "^8.2.6",
     "postcss-cli": "^8.3.1",
+    "postcss-flexbugs-fixes": "^5.0.2",
     "sass": "^1.32.8",
     "stylelint": "^13.11.0",
     "stylelint-config-recommended-scss": "^4.2.0"
