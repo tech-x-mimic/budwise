@@ -1,0 +1,23 @@
+@import "./responsive";
+@import "../functions/breakpoint";
+@import "../../variables/display.scss";
+
+@mixin make-display() {
+  @include responsives() using ($breakpoint) {
+    @each $class, $value in $display-class-map {
+      .#{with-affix($breakpoint, $class)} {
+        display: $value;
+      }
+    }
+  }
+}
+
+@mixin make-visible() {
+  @include responsives() using ($breakpoint) {
+    @each $class, $value in $visible-class-map {
+      .#{with-affix($breakpoint, $class)} {
+        visibility: $value;
+      }
+    }
+  }
+}

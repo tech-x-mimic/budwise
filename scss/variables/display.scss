@@ -1,0 +1,18 @@
+$display-class-map: (
+  block: block,
+  inline-block: inline-block,
+  inline: inline,
+  flex: flex,
+  inline-flex: inline-flex,
+  grid: grid,
+  inline-grid: inline-grid,
+  table: table,
+  table-cell: table-cell,
+  table-column: table-column,
+  none: none
+);
+
+$visible-class-map: (
+  visible: visible,
+  invisible: hidden
+);
