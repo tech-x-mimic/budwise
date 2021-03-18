@@ -11,11 +11,8 @@
       }
     }
 
-    .#{$name} {
+    .#{$name}, .#{$name}-500 {
       color: $color;
-      &-500 {
-        @extend .#{$name};
-      }
     }
 
     @for $i from 1 through 4 {

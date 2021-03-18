@@ -20,20 +20,20 @@ $positions: (static, fixed, absolute, relative, sticky) !default;
 
 .fixed-top {
   top: 0;
-  @include fixed-block;
+  @include fixed-block();
 }
 
 .fixed-bottom {
   bottom: 0;
-  @include fixed-block;
+  @include fixed-block();
 }
 
 .sticky-top {
   top: 0;
-  @include sticky-block;
+  @include sticky-block();
 }
 
 .sticky-bottom {
   bottom: 0;
-  @include sticky-block;
+  @include sticky-block();
 }

@@ -2001,6 +2001,7 @@
 .red, .red-500 {
   color: #f00;
 }
+
 .red-600 {
   color: #cc0000;
 }
@@ -2036,6 +2037,7 @@
 .orange, .orange-500 {
   color: #ff7f00;
 }
+
 .orange-600 {
   color: #cc6600;
 }
@@ -2071,6 +2073,7 @@
 .yellow, .yellow-500 {
   color: #ff0;
 }
+
 .yellow-600 {
   color: #cccc00;
 }
@@ -2106,6 +2109,7 @@
 .greenYellow, .greenYellow-500 {
   color: #7fff00;
 }
+
 .greenYellow-600 {
   color: #66cc00;
 }
@@ -2141,6 +2145,7 @@
 .green, .green-500 {
   color: #0f0;
 }
+
 .green-600 {
   color: #00cc00;
 }
@@ -2176,6 +2181,7 @@
 .greenCyan, .greenCyan-500 {
   color: #00ff7f;
 }
+
 .greenCyan-600 {
   color: #00cc66;
 }
@@ -2211,6 +2217,7 @@
 .cyan, .cyan-500 {
   color: #0ff;
 }
+
 .cyan-600 {
   color: #00cccc;
 }
@@ -2246,6 +2253,7 @@
 .blueCyan, .blueCyan-500 {
   color: #007fff;
 }
+
 .blueCyan-600 {
   color: #0066cc;
 }
@@ -2281,6 +2289,7 @@
 .blue, .blue-500 {
   color: #00f;
 }
+
 .blue-600 {
   color: #0000cc;
 }
@@ -2316,6 +2325,7 @@
 .blueMagenta, .blueMagenta-500 {
   color: #7f00ff;
 }
+
 .blueMagenta-600 {
   color: #6600cc;
 }
@@ -2351,6 +2361,7 @@
 .magenta, .magenta-500 {
   color: #f0f;
 }
+
 .magenta-600 {
   color: #cc00cc;
 }
@@ -2386,6 +2397,7 @@
 .redMagenta, .redMagenta-500 {
   color: #ff007f;
 }
+
 .redMagenta-600 {
   color: #cc0066;
 }
@@ -2421,6 +2433,7 @@
 .gray, .gray-500 {
   color: #9b9b9b;
 }
+
 .gray-600 {
   color: #7c7c7c;
 }

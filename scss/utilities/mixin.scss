@@ -15,7 +15,7 @@
   width: $wrapper-width-pct;
   padding-bottom: $wrapper-width-pct / $radio;
 
-  & > * {
+  > * {
     position: absolute;
     top: 0;
     left: 0;
